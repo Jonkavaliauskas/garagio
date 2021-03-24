@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: false
+  name: MyString
+  phone: 1
+  email: MyString
+  car_make: MyString
+  car_model: MyString
+  car_year: 1
+  car_fuel_type: false
+
+two:
+  type: false
+  name: MyString
+  phone: 1
+  email: MyString
+  car_make: MyString
+  car_model: MyString
+  car_year: 1
+  car_fuel_type: false
