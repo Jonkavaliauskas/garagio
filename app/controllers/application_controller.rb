@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    
+ 
     before_action :current_customer
     before_action :current_shop_owner
     
