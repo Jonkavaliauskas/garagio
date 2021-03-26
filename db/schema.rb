@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_040942) do
+ActiveRecord::Schema.define(version: 2021_03_26_160630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,26 +26,34 @@ ActiveRecord::Schema.define(version: 2021_03_25_040942) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "phone", null: false
-    t.string "email", null: false
-    t.string "car_make", null: false
-    t.string "car_model", null: false
-    t.integer "car_year", null: false
-    t.string "car_fuel_type", null: false
+  create_table "cars", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "make"
+    t.string "model"
+    t.integer "year"
+    t.string "fuel_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "shop_owners", force: :cascade do |t|
-    t.string "shop_name", null: false
-    t.string "phone", null: false
+  create_table "customers", force: :cascade do |t|
+    t.string "name", null: false
     t.string "email", null: false
-    t.string "address", null: false
-    t.string "hours", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "phone"
+  end
+
+  create_table "shop_owners", force: :cascade do |t|
+    t.string "shop_name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "phone"
+    t.string "address"
+    t.string "hours"
+    t.string "password_digest"
   end
 
 end

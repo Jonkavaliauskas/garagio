@@ -1,0 +1,22 @@
+<h1>Create Shop Owner Account</h2>
+<%=form_tag '/shop_owners/signup', method: :post do %>
+ <div>
+  <%= label_tag :shop_name%>
+  <%= text_field_tag :shop_name%>
+ </div>
+ <div>
+  <%= label_tag :email%>
+  <%= text_field_tag :email%>
+ </div>
+ <div>
+  <%= label_tag :password%>
+  <%= password_field_tag :password%>
+ </div>
+ <div>
+  <%= label_tag :password_confirmation%>
+  <%= password_field_tag :password_confirmation%>
+ </div>
+ <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+ 
+<%= submit_tag 'Sign Up' %>
+<%end%>
