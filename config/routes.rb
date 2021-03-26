@@ -37,6 +37,14 @@ Rails.application.routes.draw do
   post 'customers/login', to: 'sessions#createcustomer'
   get 'customers/logout', to: 'sessions#destroycustomer'
 
+  get 'shop_owners/signup', to: 'shop_owner#new'
+  post 'shop_owners/signup', to: 'shop_owner#create'
+  get 'shop_owners/profile', to: 'shop_owner#show'
+
+  get 'shop_owners/login', to: 'sessions#newshop_owner'
+  post 'shop_owners/login', to: 'sessions#createshop_owner'
+  get 'shop_owners/logout', to: 'sessions#destroyshop_owner'
+
   get '/', to: 'welcome#index'
   get '/signup', to: 'welcome#signup'
   get '/login', to: 'welcome#login'
