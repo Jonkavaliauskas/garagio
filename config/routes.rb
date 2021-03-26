@@ -23,8 +23,21 @@ Rails.application.routes.draw do
       get 'customers/destroy/:id', to: 'customers#destroy'
     end
   end
-  get 'homepage/index'
-  root 'homepage#index'
-  get '/*path' => 'homepage#index'
+
+  #get 'homepage/index'
+  #root 'homepage#index'
+  #get '/*path' => 'homepage#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'customers/signup', to: 'customers#new'
+  post 'customers/signup', to: 'customers#create'
+  get 'customers/profile', to: 'customers#show'
+
+  get 'customers/login', to: 'sessions#newcustomer'
+  post 'customers/login', to: 'sessions#createcustomer'
+  get 'customers/logout', to: 'sessions#destroycustomer'
+
+  get '/', to: 'welcome#index'
+  get '/signup', to: 'welcome#signup'
+  get '/login', to: 'welcome#login'
 end
