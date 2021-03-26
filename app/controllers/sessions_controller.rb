@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
     def newcustomer
+        if customer_authenticated
+            redirect_to '/customers/profile'
+        end
     end
 
     def createcustomer

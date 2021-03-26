@@ -1,6 +1,5 @@
 class CustomersController < ApplicationController
 
-    before_action :current_customer
     before_action :require_authenticated
     skip_before_action :require_authenticated, only: [:new, :create]
 
@@ -9,8 +8,8 @@ class CustomersController < ApplicationController
     end
 
     def new
-        if authenticated
-            redirect_to 'customers/profile'
+        if customer_authenticated
+            redirect_to '/customers/profile'
         end
         @customer = Customer.new
     end
@@ -24,8 +23,7 @@ class CustomersController < ApplicationController
         )
         if @customer.save
             session[:customer_id] = @customer.id
-            byebug
-            redirect_to 'customers/profile'
+            redirect_to '/customers/profile'
         else
             redirect_to '/'
         end
@@ -33,16 +31,8 @@ class CustomersController < ApplicationController
 
     private
 
-    def current_customer
-        @current_customer = Customer.find_by(id: session[:customer_id])
-    end
-
-    def authenticated
-        @current_customer && @current_customer.id != nil
-    end
-
     def require_authenticated
-        return redirect_to('/') unless authenticated
+        return redirect_to('/') unless customer_authenticated
     end
 
 end
