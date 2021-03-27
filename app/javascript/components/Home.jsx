@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from './Footer'
+import Button from './Button'
 
 
 export default () => (
@@ -13,21 +14,27 @@ export default () => (
         </p>
         <hr className="my-4" />
         <div className="container button-container">
+          {/* {location.pathname === '/' && (
+            <Button
+              className="btn btn-lg custom-button"
+              text='Login'
+            />
+          )} */}
           <Link
-            to="/login"
-            className="btn btn-lg custom-button"
-            role="button"
-          >
-            Login
-        </Link>
+            to="/login">
+            <Button
+              className="btn btn-lg custom-button"
+              text='Login'
+            />
+          </Link>
         &nbsp;
-          <Link
-            to="/register"
-            className="btn btn-lg custom-button"
-            role="button"
-          >
-            Register
-        </Link>
+        <Link
+            to="/register">
+            <Button
+              className="btn btn-lg custom-button"
+              text='Register'
+            />
+          </Link>
         </div>
         <Footer />
 
