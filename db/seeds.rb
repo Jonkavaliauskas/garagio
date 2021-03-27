@@ -8,3 +8,5 @@
 
 chad = Customer.new(name: "Chad", email: "chad.palmer@yale.edu", password: "12345", password_confirmation: "12345")
 chad.save
+
+car = Car.create(customer: chad, make: "Toyota", model: "Prius")

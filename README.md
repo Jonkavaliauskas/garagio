@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome
+Login Shop Owners
+Sign Up Shop Owners
+Shop Owner View:
+    All customers
+    All appointments
+        Calendar*
+        List
+Customer View:
+    Select Issue
+    Search Shop Owners
+        Filter by various criteria
+            List by distance (store location in lat/long, calculate distance)
+    Enter additional information
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Carl, Nico: Keep making webpages
+Chad, Jonas: Implement API calls, look into authentication
