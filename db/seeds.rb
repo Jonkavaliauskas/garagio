@@ -10,6 +10,7 @@ Customer.destroy_all
 Car.destroy_all
 ShopOwner.destroy_all
 Appointment.destroy_all
+Review.destroy_all
 
 chad = Customer.create(name: "Chad", email: "chad.palmer@yale.edu")
 jonas = Customer.create(name: "Jonas", email: "jonas@yale.edu")
@@ -23,3 +24,5 @@ carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", a
 jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
 
 a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.now, car_issue: "ac broke")
+
+r1 = Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
