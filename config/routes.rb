@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get 'reviews/index'
+      get 'reviews/create'
+      get 'reviews/show'
+      get 'reviews/destroy'
+    end
+  end
+  namespace :api do
+    namespace :v1 do
       get 'appointments/index', to: 'appointments#index'
       post 'appointments/index', to: 'appointments#create'
       get 'appointments/:id', to: 'appointments#show'
