@@ -1,5 +1,5 @@
 class ShopOwner < ApplicationRecord
-    has_secure_password
+    #has_secure_password
 
     has_many :appointments
     has_many :customers, through: :appointments

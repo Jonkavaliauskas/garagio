@@ -1,4 +1,8 @@
-# README
+# Garagio
+
+A cool app for car people!
+
+## TODO
 
 Welcome
 Login Shop Owners
@@ -17,3 +21,8 @@ Customer View:
 
 Carl, Nico: Keep making webpages
 Chad, Jonas: Implement API calls, look into authentication
+
+
+## API Access
+
+You can view API stuff in browser by going to the url /api/v1/...", with routes as indicated in routes.rb. I use a Chrome extension called Restman to test non-GET requests.

@@ -1,26 +1,23 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'appointments/index'
-      get 'appointments/create'
-      get 'appointments/show/:id', to: 'appointments#show'
-      get 'appointments/destroy/:id', to: 'appointments#destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      get 'shop_owners/index'
-      post 'shop_owners/create'
-      get 'shop_owners/show/:id', to: 'shop_owners#show'
-      get 'shop_owners/destroy/:id', to: 'shop_owners#destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      get 'customers/index'
-      get 'customers/create'
-      get 'customers/show/:id', to: 'customers#show'
-      get 'customers/destroy/:id', to: 'customers#destroy'
+      get 'appointments/index', to: 'appointments#index'
+      post 'appointments/index', to: 'appointments#create'
+      get 'appointments/:id', to: 'appointments#show'
+      patch 'appointments/:id', to: 'appointments#update'
+      delete 'appointments/:id', to: 'appointments#destroy'
+
+      get 'shop_owners/index', to: 'shop_owners#index'
+      post 'shop_owners/index', to: 'shop_owners#create'
+      get 'shop_owners/:id', to: 'shop_owners#show'
+      patch 'shop_owners/:id', to: 'shop_owners#update'
+      delete 'shop_owners/:id', to: 'shop_owners#destroy'
+
+      get 'customers/index', to: 'customers#index'
+      post 'customers/index', to: 'customers#create'
+      get 'customers/:id', to: 'customers#show'
+      patch 'customers/:id', to: 'customers#update'
+      delete 'customers/:id', to: 'customers#destroy'
     end
   end
 
