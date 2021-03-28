@@ -12,7 +12,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def show
     appointment = Appointment.find(params[:id])
-    render json: appointment, include: [:customer, :shop_owner]
+    render json: appointment, include: [:customer, :shop_owner, :car]
   end
 
   def update

@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'reviews/index'
-      get 'reviews/create'
-      get 'reviews/show'
-      get 'reviews/destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
       get 'appointments/index', to: 'appointments#index'
       post 'appointments/index', to: 'appointments#create'
       get 'appointments/:id', to: 'appointments#show'
@@ -38,13 +30,22 @@ Rails.application.routes.draw do
       get 'cars/:id', to: 'cars#show'
       patch 'cars/:id', to: 'cars#update'
       delete 'cars/:id', to: 'cars#destroy'
+
+      get 'reviews/index', to: "reviews#index"
+      post 'reviews/index', to: "reviews#create"
+      get 'reviews/:id', to: 'reviews#show'
+      patch 'reviews/:id', to: 'reviews#update'
+      delete 'reviews/:id', to: 'reviews#destroy'
     end
   end
 
   get 'homepage/index'
   root 'homepage#index'
   get '/*path' => 'homepage#index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # old test controllers
 
   # get 'customers/signup', to: 'customers#new'
   # post 'customers/signup', to: 'customers#create'

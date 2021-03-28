@@ -22,4 +22,4 @@ bugatti = Car.create(customer: chad, make: "Bugatti", model: "Veyron", year: 201
 carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511")
 jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
 
-a1 = Appointment.create(shop_owner: carguys, customer: chad, date: DateTime.now, car_issue: "ac broke")
+a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.now, car_issue: "ac broke")

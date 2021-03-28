@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_134555) do
+ActiveRecord::Schema.define(version: 2021_03_28_160821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,17 +46,17 @@ ActiveRecord::Schema.define(version: 2021_03_28_134555) do
   create_table "appointments", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.datetime "date", null: false
-    t.string "car_issue", null: false
+    t.string "car_issue"
     t.float "last_quote"
     t.integer "invoice_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "shop_owner_id"
-    t.integer "car_id"
+    t.integer "shop_owner_id", null: false
+    t.integer "car_id", null: false
   end
 
   create_table "cars", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
     t.string "make"
     t.string "model"
     t.integer "year"
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2021_03_28_134555) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
     t.integer "rating"
     t.text "assessment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "shop_owner_id", null: false
   end
 
   create_table "shop_owners", force: :cascade do |t|
