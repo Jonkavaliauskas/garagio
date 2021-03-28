@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_160630) do
+ActiveRecord::Schema.define(version: 2021_03_28_044128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2021_03_26_160630) do
     t.string "address"
     t.string "hours"
     t.string "password_digest"
+  end
+
+  create_table "vehicle_infos", force: :cascade do |t|
+    t.bigint "year"
+    t.string "make"
+    t.string "model"
+    t.string "body_styles", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
