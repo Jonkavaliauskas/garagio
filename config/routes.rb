@@ -1,33 +1,51 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'appointments/index'
-      get 'appointments/create'
-      get 'appointments/show/:id', to: 'appointments#show'
-      get 'appointments/destroy/:id', to: 'appointments#destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      get 'shop_owners/index'
-      post 'shop_owners/create'
-      get 'shop_owners/show/:id', to: 'shop_owners#show'
-      get 'shop_owners/destroy/:id', to: 'shop_owners#destroy'
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      get 'customers/index'
-      get 'customers/create'
-      get 'customers/show/:id', to: 'customers#show'
-      get 'customers/destroy/:id', to: 'customers#destroy'
+      get 'appointments/index', to: 'appointments#index'
+      post 'appointments/index', to: 'appointments#create'
+      get 'appointments/:id', to: 'appointments#show'
+      patch 'appointments/:id', to: 'appointments#update'
+      delete 'appointments/:id', to: 'appointments#destroy'
+
+      get 'shop_owners/index', to: 'shop_owners#index'
+      post 'shop_owners/index', to: 'shop_owners#create'
+      get 'shop_owners/:id', to: 'shop_owners#show'
+      patch 'shop_owners/:id', to: 'shop_owners#update'
+      delete 'shop_owners/:id', to: 'shop_owners#destroy'
+
+      get 'customers/index', to: 'customers#index'
+      post 'customers/index', to: 'customers#create'
+      get 'customers/:id', to: 'customers#show'
+      patch 'customers/:id', to: 'customers#update'
+      delete 'customers/:id', to: 'customers#destroy'
+      
+      get 'customers/index', to: 'customers#index'
+      post 'customers/index', to: 'customers#create'
+      get 'customers/:id', to: 'customers#show'
+      patch 'customers/:id', to: 'customers#update'
+      delete 'customers/:id', to: 'customers#destroy'
+
+      get 'cars/index', to: "cars#index"
+      post 'cars/index', to: "cars#create"
+      get 'cars/:id', to: 'cars#show'
+      patch 'cars/:id', to: 'cars#update'
+      delete 'cars/:id', to: 'cars#destroy'
+
+      get 'reviews/index', to: "reviews#index"
+      post 'reviews/index', to: "reviews#create"
+      get 'reviews/:id', to: 'reviews#show'
+      patch 'reviews/:id', to: 'reviews#update'
+      delete 'reviews/:id', to: 'reviews#destroy'
     end
   end
 
   get 'homepage/index'
   root 'homepage#index'
   get '/*path' => 'homepage#index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # old test controllers
 
   # get 'customers/signup', to: 'customers#new'
   # post 'customers/signup', to: 'customers#create'
