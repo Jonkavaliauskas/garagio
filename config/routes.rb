@@ -18,6 +18,18 @@ Rails.application.routes.draw do
       get 'customers/:id', to: 'customers#show'
       patch 'customers/:id', to: 'customers#update'
       delete 'customers/:id', to: 'customers#destroy'
+
+      get 'customers/index', to: 'customers#index'
+      post 'customers/index', to: 'customers#create'
+      get 'customers/:id', to: 'customers#show'
+      patch 'customers/:id', to: 'customers#update'
+      delete 'customers/:id', to: 'customers#destroy'
+
+      get 'cars/index', to: "cars#index"
+      post 'cars/index', to: "cars#create"
+      get 'cars/:id', to: 'cars#show'
+      patch 'cars/:id', to: 'cars#update'
+      delete 'cars/:id', to: 'cars#destroy'
     end
   end
 
