@@ -15,12 +15,8 @@ class ShopOwnerController < ApplicationController
     end
 
     def create
-        @shop_owner = ShopOwner.new(
-            shop_name: params[:shop_name],
-            email: params[:email],
-            password: params[:password],
-            password_confirmation: params[:password_confirmation]
-        )
+        @shop_owner = ShopOwner.new(shop_owner_params)
+
         if @shop_owner.save
             session[:shop_owner_id] = @shop_owner.id
             redirect_to '/shop_owners/profile'
@@ -35,4 +31,12 @@ class ShopOwnerController < ApplicationController
         return redirect_to('/') unless shop_owner_authenticated
     end
 
+    def shop_owner_params
+        params.permit(
+            :shop_name,
+            :email,
+            :password,
+            :password_confirmation
+        )
+    end
 end
