@@ -6,7 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-chad = Customer.new(name: "Chad", email: "chad.palmer@yale.edu", password: "12345", password_confirmation: "12345")
-chad.save
+Customer.destroy_all
+Car.destroy_all
+ShopOwner.destroy_all
+Appointment.destroy_all
 
-car = Car.create(customer: chad, make: "Toyota", model: "Prius")
+chad = Customer.create(name: "Chad", email: "chad.palmer@yale.edu")
+jonas = Customer.create(name: "Jonas", email: "jonas@yale.edu")
+carl = Customer.create(name: "Carl", email: "carl@yale.edu")
+nico = Customer.create(name: "Nico", email: "nico@yale.edu")
+
+prius = Car.create(customer: chad, make: "Toyota", model: "Prius", year: 2007)
+bugatti = Car.create(customer: chad, make: "Bugatti", model: "Veyron", year: 2011)
+
+carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511")
+jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
+
+a1 = Appointment.create(shop_owner: carguys, customer: chad, date: DateTime.now, car_issue: "ac broke")

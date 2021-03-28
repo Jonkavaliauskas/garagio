@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_160630) do
+ActiveRecord::Schema.define(version: 2021_03_28_020526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "shop_id", null: false
     t.integer "customer_id", null: false
     t.datetime "date", null: false
     t.string "car_issue", null: false
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_160630) do
     t.integer "invoice_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "shop_owner_id"
   end
 
   create_table "cars", force: :cascade do |t|
