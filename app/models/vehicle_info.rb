@@ -1,0 +1,2 @@
+class VehicleInfo < ApplicationRecord
+end
