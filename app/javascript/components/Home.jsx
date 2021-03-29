@@ -12,8 +12,6 @@ class Home extends React.Component {
     this.set_make = this.set_make.bind(this)
     this.set_model = this.set_model.bind(this)
     this.set_body = this.set_body.bind(this)
-    this.fetchData = this.fetchData.bind(this)
-
 
     this.state = {
       year: '',
