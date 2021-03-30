@@ -28,11 +28,11 @@ const ServiceSelect = (props) => {
       <div className="jumbotron jumbotron-fluid bg-transparent">
         <div className="container secondary-color">
           <h1 className="display-4">Garagio</h1>
-          <p className="lead">Select the services you need for your repair.</p>
+          <p className="lead">Select the services you need for your repair, and we'll get you connected to car shops in no time!</p>
           <hr />
         </div>
-        <div className="container">
-          <div className="container-fluid" style={{ float: "left", width: "50%" }}>
+        <div className="d-flex flex-row justify-content-center mt-3">
+          <div className="d-flex flex-column m-3">
             <ServiceCheckbox
               className="serviceCheckbox"
               text="Technical Check"
@@ -64,7 +64,7 @@ const ServiceSelect = (props) => {
               updateState={updateServices}
             />
           </div>
-          <div className="container" style={{ float: "right", width: "50%" }}>
+          <div className="d-flex flex-column m-3">
             <ServiceCheckbox
               className="serviceCheckbox"
               text="Brakes"
@@ -97,8 +97,7 @@ const ServiceSelect = (props) => {
             />
           </div>
         </div>
-      </div>
-      <div styles={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px', margin: 'auto'}} className="btn center">
+        <div styles={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px'}} className="btn d-flex justify-content-center">
         <Link
           to={{
             pathname: "/login",
@@ -123,6 +122,7 @@ const ServiceSelect = (props) => {
             />
             </Link>
           </div>
+      </div>
       <Footer />
     </div>
   );
