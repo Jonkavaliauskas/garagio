@@ -111,10 +111,10 @@ class Home extends React.Component {
           </Link>
         &nbsp;
         <Link
-            to="/register">
+            to="/dashboard">
             <Button
               className="btn btn-lg custom-button"
-              text='Register'
+              text='Dashboard'
             />
           </Link>
           &nbsp;
