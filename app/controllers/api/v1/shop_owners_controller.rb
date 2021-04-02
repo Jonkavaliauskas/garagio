@@ -1,9 +1,30 @@
 class Api::V1::ShopOwnersController < ApplicationController
   protect_from_forgery with: :null_session
   
+  # http://127.0.0.1:3000/api/v1/shop_owners/index?address=344+College+street+New+Haven+CT&distance=5
+  # http://127.0.0.1:3000/api/v1/shop_owners/index?lat=41.309368&lng=-72.927872&distance=10.5
+  # distance without location returns all
+  # location without distance returns all, with distances
   def index
-    shop_owners = ShopOwner.all
-    render json: shop_owners
+    if params[:address]
+      location = params[:address]
+    elsif params[:lat] and params[:lng]
+      location = [params[:lat], params[:lng]]
+    end
+
+    if location
+      if params[:distance]
+        shop_owners = ShopOwner.within(params[:distance], :origin=>location)
+      else
+        shop_owners = ShopOwner.all
+      end
+
+      result = ShopOwner.json_with_distance(shop_owners, location)
+      render json: result
+    else
+      shop_owners = ShopOwner.all
+      render json: shop_owners
+    end
   end
 
   def create
@@ -12,7 +33,7 @@ class Api::V1::ShopOwnersController < ApplicationController
 
   def show
     shop_owner = ShopOwner.find(params[:id])
-    render json: shop_owner, include: [:appointments, :reviews]
+    render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
   end
 
   def update

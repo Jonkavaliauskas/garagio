@@ -26,3 +26,6 @@ jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com"
 a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.now, car_issue: "ac broke")
 
 r1 = Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
+r2 = Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
+r3 = Review.create(shop_owner: carguys, customer: nico, rating: 4, assessment: "my car smells a lot better now")
+r4 = Review.create(shop_owner: carguys, customer: carl, rating: 2, assessment: "the owner was very impolite")
