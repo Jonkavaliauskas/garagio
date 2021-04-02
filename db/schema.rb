@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 2021_03_28_160821) do
     t.string "password_digest"
   end
 
+  create_table "vehicle_infos", force: :cascade do |t|
+    t.bigint "year"
+    t.string "make"
+    t.string "model"
+    t.string "body_styles", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

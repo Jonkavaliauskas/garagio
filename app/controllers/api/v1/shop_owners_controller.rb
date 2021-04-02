@@ -12,7 +12,7 @@ class Api::V1::ShopOwnersController < ApplicationController
 
   def show
     shop_owner = ShopOwner.find(params[:id])
-    render json: shop_owner, include: [:appointments, :reviews]
+    render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
   end
 
   def update
