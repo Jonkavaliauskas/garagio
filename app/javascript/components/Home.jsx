@@ -111,7 +111,12 @@ class Home extends React.Component {
           </Link>
         &nbsp;
         <Link
-            to="/dashboard">
+            to={{
+              pathname: "/dashboard",
+              state: {
+                shopOwnerId: '3'
+              }
+            }}>
             <Button
               className="btn btn-lg custom-button"
               text='Dashboard'

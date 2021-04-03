@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import CustomerBox from "./CustomerBox"
 import Button from "../Button"
-// import { Calendar } from "react-big-calendar"
 import ShopCalendar from "./ShopCalendar"
 
-const ShopDashboard = () => {
+const ShopDashboard = (props) => {
 
   const [appointments, setAppointments] = useState([])
   const [customers, setCustomers] = useState([])
@@ -15,7 +14,8 @@ const ShopDashboard = () => {
   }, [])
 
   const getAppointments = async () => {
-    const shopOwner = await fetchShopOwner()
+    // console.log(props)
+    const shopOwner = await fetchShopOwner(props.location.state.shopOwnerId)
     const apptsFromServer = shopOwner['appointments']
     setAppointments(apptsFromServer)
 
@@ -25,15 +25,8 @@ const ShopDashboard = () => {
     }
   }
 
-  const getCustomers = async () => {
-    for (const appt of apptsFromServer) {
-      const customerData = await fetchCustomer(appt['customer_id'])
-      setCustomers([...customers, customerData])
-    }
-  }
-
-  const fetchShopOwner = async () => {
-    const res = await fetch('http://localhost:3000/api/v1/shop_owners/3')
+  const fetchShopOwner = async (id) => {
+    const res = await fetch(`http://localhost:3000/api/v1/shop_owners/${id}`)
     const data = await res.json()
 
     return data

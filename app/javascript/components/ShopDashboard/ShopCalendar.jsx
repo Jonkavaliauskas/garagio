@@ -22,11 +22,8 @@ const ShopCalendar = ({ appointments, customers, fetchCustomer }) => {
   }
 
   const convertToEvents = async (appointments) => {
-    console.log("appointments")
-    console.log(appointments)
     for (let appt of appointments) {
       let customer = await fetchCustomer(appt['customer_id'])
-      console.log(customer)
       setEvents([...events, {
         title: customer['name'].concat(': ', appt['car_issue']),
         start: Date.parse(appt['date']),
@@ -55,7 +52,9 @@ const ShopCalendar = ({ appointments, customers, fetchCustomer }) => {
           views={["month", "week"]}
           min={new Date(2021, 0, 1, 8, 0)} // 8.00 AM
           max={new Date(2021, 0, 1, 17, 0)} // Max will be 6.00 PM!
-
+          style={{
+            fontSize: 15
+          }}
         />
       </div>
     )
