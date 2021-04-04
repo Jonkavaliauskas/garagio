@@ -173,21 +173,21 @@ class Home extends React.Component {
                 </div>
 
                 {/* UNCOMMENT BELOW TO CONNECT (update routes.jsx and enter below) */}
-                {/* <Link to={{
-                  pathname: '/{CHOOSE ISSUE PAGE}',
-                  props: {
+                <Link to={{
+                  pathname: '/serviceselect',
+                  state: {
                     year: this.state.year,
                     make: this.state.make,
                     model: this.state.model,
                     body: this.state.body
                   }
-                }}> */}
+                }}>
                 <Button
                   className="btn btn-lg custom-button"
                   text='Submit'
                   onClick={() => console.log("Submitted: " + this.state.year + " " + this.state.make + " " + this.state.model + " " + this.state.body)}
                 />
-                {/* </Link> */}
+                </Link>
 
 
               </div>
