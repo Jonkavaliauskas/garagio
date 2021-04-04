@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from './Button'
 
 
-const ShopListItem = ({ name, distance }) => {
+const ShopListItem = ({ shop, year, make, model, body, services }) => {
     return (
         <div
             // className={`task ${shop.reminder ? 'reminder' : ''}`}
@@ -12,23 +12,42 @@ const ShopListItem = ({ name, distance }) => {
             onDoubleClick={() => onToggle(task.id)}
         >
             <h3>
-                {name}{' '}
-                <Link to='/login'>
+                {shop.shop_name}{' '}
+            </h3>
+            &nbsp;&nbsp;
+            { shop.distance_to_location}mi away
+
+            <div className='book-now-button'>
+
+                <Link to={{
+                    pathname: '/login',
+                    props: {
+                        year: year,
+                        make: make,
+                        model: model,
+                        body: body,
+                        shop: shop,
+                        services: services
+                    }
+                }}>
+
                     <Button
-                        className=""
+                        className="btn btn-lg custom-button"
                         text="Book now"
                     // onClick={
                     //     console.log("Current selected services: " + selectedServices.toString())
                     // }
                     />
 
+
                     {/* <FaTimes
                         style={{ color: 'red', cursor: 'pointer' }}
                     // onClick={() => onSelect(task.id)}
                     /> */}
                 </Link>
-            </h3>
-            <p>{distance}mi away</p>
+            </div>
+
+            {/* <p>{shop.distance_to_location}mi away</p> */}
         </div>
     )
 }

@@ -80,6 +80,24 @@
     justify-content: space-between;
   
   }
+  .shop-list-item {
+    width: 650px;
+    display:flex;
+    /* justify-content: center; */
+    position:relative;
+    /* border-style: groove; */
+    padding-bottom: 5%;
+  }
+  .shop-list-container {
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .book-now-button {
+    position: absolute;
+    right: 0;
+    }
   /* .footer {
     position: fixed;
     left: 0;
