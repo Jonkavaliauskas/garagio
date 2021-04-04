@@ -23,15 +23,15 @@ const PhotoSubmitForm = props => {
 
     return (
         <form onSubmit={handleSubmit}>
-        <label htmlFor="caption">
-            Caption
-            <input type="text" name="caption" />
-        </label>
-        <label htmlFor="image" >
-            Upload image
-            <input type="file" name="image" accept="image/*" />
-        </label>
-        <input type="submit" value="Submit" />
+          <label htmlFor="caption">
+              Caption
+              <input type="text" name="caption" />
+          </label>
+          <label htmlFor="image" >
+              Upload image
+              <input type="file" name="image" accept="image/*" />
+          </label>
+          <input type="submit" value="Submit" />
         </form>
     );
   

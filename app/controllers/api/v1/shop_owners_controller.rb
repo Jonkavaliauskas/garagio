@@ -6,6 +6,17 @@ class Api::V1::ShopOwnersController < ApplicationController
   # distance without location returns all
   # location without distance returns all, with distances
   def index
+    # lookup by email, return user show page
+    if params[:email]
+      shop_owner = ShopOwner.find_by(email: params[:email])
+      if shop_owner
+        render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
+      else
+        render json: {result: "not found"}
+      end
+      return
+    end
+
     if params[:address]
       location = params[:address]
     elsif params[:lat] and params[:lng]
