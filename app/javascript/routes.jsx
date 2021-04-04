@@ -6,6 +6,7 @@ import Booking from "./components/Booking";
 import Register from "./components/Register";
 import Calendar from "./components/Calendar";
 import PhotoSubmitForm from "./components/PhotoSubmitForm";
+import ServiceSelect from "./components/ServiceSelect"
 import About from "./components/About";
 import { createBrowserHistory } from "history";
 
@@ -20,6 +21,7 @@ export default (
       <Route path="/register" exact component={Register} />
       <Route path="/calendar" exact component={Calendar} />
       <Route path="/photosubmitform" exact component={PhotoSubmitForm} />
+      <Route path="/serviceselect" exact component={ServiceSelect} />
       <Route path="/about" exact component={About} />
     </Switch>
   </Router>

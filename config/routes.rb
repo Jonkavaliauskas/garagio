@@ -33,6 +33,16 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      get 'vehicle_infos/get_years', to: 'vehicle_infos#get_years'
+      get 'vehicle_infos/:year/get_makes', to: 'vehicle_infos#get_makes'
+      get 'vehicle_infos/:year/:make/get_models', to: 'vehicle_infos#get_models'
+      get 'vehicle_infos/:year/:make/:model/get_body_styles', to: 'vehicle_infos#get_body_styles'
+    end
+  end
+
+
   get 'homepage/index'
   root 'homepage#index'
   get '/*path' => 'homepage#index'
