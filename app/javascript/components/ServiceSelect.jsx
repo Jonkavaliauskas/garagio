@@ -100,8 +100,8 @@ const ServiceSelect = (props) => {
         <div styles={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px'}} className="btn d-flex justify-content-center">
         <Link
           to={{
-            pathname: "/login",
-            state: {
+            pathname: "/chooseshop",
+            props: {
               year: props.location.state.year,
               make: props.location.state.make,
               model: props.location.state.model,
