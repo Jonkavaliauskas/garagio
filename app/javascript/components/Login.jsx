@@ -7,11 +7,18 @@ const Login = () => {
 
     let history = useHistory();
 
-    const submitPost = formData => {
-        return fetch(USER_URL + formData.get("email"))
-          .then(res => res.json())
-          .then(res => {
-            history.push('/fakeprofile')
+    const submitPost = (formData) => {
+        fetch(USER_URL + formData.get("email"))
+            .then(res => res.json())
+            .then(res => {
+                if (res.result) {
+                    window.location.reload();
+                }
+                else {
+                    history.push('/fakeprofile', {
+                        shopOwnerId: res.id
+                    })
+                }
           });
       }
 
