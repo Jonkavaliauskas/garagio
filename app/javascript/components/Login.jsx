@@ -11,14 +11,14 @@ const Login = () => {
         return fetch(USER_URL + formData.get("email"))
           .then(res => res.json())
           .then(res => {
-            history.push('/authrequired')
-          })
+            history.push('/fakeprofile')
+          });
       }
 
     const handleSubmit = event => {
-        event.preventDefault()
-        const formData = new FormData(event.target)
-        submitPost(formData)
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        submitPost(formData);
     }
 
     return (
