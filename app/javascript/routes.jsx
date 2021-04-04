@@ -2,6 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Booking from "./components/Booking";
 import Register from "./components/Register";
 import Calendar from "./components/Calendar";
 import PhotoSubmitForm from "./components/PhotoSubmitForm";
@@ -15,6 +16,7 @@ export default (
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
+      <Route path="/booking" exact component={Booking} />
       <Route path="/register" exact component={Register} />
       <Route path="/calendar" exact component={Calendar} />
       <Route path="/photosubmitform" exact component={PhotoSubmitForm} />
