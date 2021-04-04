@@ -12,12 +12,6 @@ Rails.application.routes.draw do
       get 'shop_owners/:id', to: 'shop_owners#show'
       patch 'shop_owners/:id', to: 'shop_owners#update'
       delete 'shop_owners/:id', to: 'shop_owners#destroy'
-
-      get 'customers/index', to: 'customers#index'
-      post 'customers/index', to: 'customers#create'
-      get 'customers/:id', to: 'customers#show'
-      patch 'customers/:id', to: 'customers#update'
-      delete 'customers/:id', to: 'customers#destroy'
       
       get 'customers/index', to: 'customers#index'
       post 'customers/index', to: 'customers#create'
