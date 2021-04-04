@@ -23,7 +23,7 @@ class Api::V1::ShopOwnersController < ApplicationController
       render json: result
     else
       shop_owners = ShopOwner.all
-      render json: shop_owners
+      render json: shop_owners, methods: :average_review
     end
   end
 

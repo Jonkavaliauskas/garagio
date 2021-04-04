@@ -23,6 +23,7 @@ class ShopOwner < ApplicationRecord
             distance_to = shop_owner.distance_to(location)
             shop_owner_json = shop_owner.as_json
             shop_owner_json["distance_to_location"] = distance_to
+            shop_owner_json["average_review"] = shop_owner.average_review
             result.append(shop_owner_json)
         end
         
