@@ -56,7 +56,7 @@ const EventInfo = ({ event }) => {
   return (
     <div className='d-flex flex-column m-4 event-info-box' style={{width: 500, height: 350, float: 'right'}}>
       <h4>{formatDate(dateObject)}</h4>
-      <p className='remove-top-margin' >{dateObject.toLocaleString('en-US', { timeZone: "America/New_York"})}</p>
+      <p className='remove-top-margin'>{dateObject.toLocaleString('en-US', { timeZone: "America/New_York"})}</p>
       <div>
         <h5 className='info-header'>{customer["name"]}</h5>
         <p className='information'>{customer["email"]}</p>
@@ -67,7 +67,7 @@ const EventInfo = ({ event }) => {
         <p className="information">{apptCar['year']} {apptCar['make']} {apptCar['model']}</p>
       </div>
       <div>
-        <h5 className='info-header'>Car Issue</h5>
+        <h5 className='info-header'>Vehicle Issue</h5>
         <p className='information'>{appt["car_issue"]}</p>
       </div>
     </div>

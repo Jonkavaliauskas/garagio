@@ -14,7 +14,7 @@ ShopOwner.destroy_all
 Appointment.destroy_all
 Review.destroy_all
 
-chad = Customer.create(name: "Chad", email: "chad.palmer@yale.edu")
+chad = Customer.create(name: "Chad Palmer", email: "chad.palmer@yale.edu", phone: "(123) 456-7890")
 jonas = Customer.create(name: "Jonas", email: "jonas@yale.edu")
 carl = Customer.create(name: "Carl", email: "carl@yale.edu")
 nico = Customer.create(name: "Nico", email: "nico@yale.edu")
@@ -26,6 +26,9 @@ carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", a
 jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
 
 a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.now, car_issue: "ac broke")
+Appointment.create(shop_owner: carguys, customer: carl, car: bugatti, date: DateTime.now, car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+Appointment.create(shop_owner: carguys, customer: chad, car: bugatti, date: DateTime.new(2021,4,3,4,6), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+
 
 r1 = Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
 
