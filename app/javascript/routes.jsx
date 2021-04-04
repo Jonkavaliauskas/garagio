@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Calendar from "./components/Calendar";
 import PhotoSubmitForm from "./components/PhotoSubmitForm";
 import About from "./components/About";
+import AuthRequired from "./components/AuthRequired";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
@@ -19,6 +20,7 @@ export default (
       <Route path="/calendar" exact component={Calendar} />
       <Route path="/photosubmitform" exact component={PhotoSubmitForm} />
       <Route path="/about" exact component={About} />
+      <Route path="/authrequired" exact component={AuthRequired} />
     </Switch>
   </Router>
 );
