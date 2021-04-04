@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const EventInfo = ({ event }) => {
 
-  const appt = event['appt']
-  const customer = event['customer']
-  const dateObject = new Date(appt['date'])
+  const fetchApptCar = async (car_id) => {
+    const res = await fetch(`http://localhost:3000/api/v1/cars/${car_id}`);
+    const data = await res.json();
+
+    setApptCar(data);
+  }
 
   const formatDate = (dateObject) => {
     const year = dateObject.getFullYear();
@@ -38,6 +41,18 @@ const EventInfo = ({ event }) => {
     return `${dayName}, ${date} ${monthName} ${year}`
   }
 
+  const [appt, setAppt] = useState(event['appt'])
+  const [customer, setCustomer] = useState(event['customer'])
+  const [dateObject, setDateObject] = useState(new Date(appt['date']))
+  const [apptCar, setApptCar] = useState(appt['car_id'])
+
+  useEffect(() => {
+    setAppt(event['appt']);
+    setCustomer(event['customer'])
+    setDateObject(new Date(appt['date']))
+    fetchApptCar(appt['car_id']);
+  }, [event])
+
   return (
     <div className='d-flex flex-column m-4 event-info-box' style={{width: 500, height: 350, float: 'right'}}>
       <h4>{formatDate(dateObject)}</h4>
@@ -46,6 +61,10 @@ const EventInfo = ({ event }) => {
         <h5 className='info-header'>{customer["name"]}</h5>
         <p className='information'>{customer["email"]}</p>
         <p className='information'>{customer["phone_number"]}</p>
+      </div>
+      <div>
+        <h5 className="info-header">Vehicle Info</h5>
+        <p className="information">{apptCar['year']} {apptCar['make']} {apptCar['model']}</p>
       </div>
       <div>
         <h5 className='info-header'>Car Issue</h5>
