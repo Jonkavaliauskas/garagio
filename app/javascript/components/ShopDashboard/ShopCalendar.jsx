@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Tooltip } from "bootstrap";
 import { get } from "jquery";
 
@@ -9,23 +8,16 @@ moment.locale("en-US");
 const localizer = momentLocalizer(moment);
 
 const ShopCalendar = ({ appointments, customers, fetchCustomer }) => {
+
   const [calendarView, setCalendarView] = useState("month")
   const [events, setEvents] = useState([])
-  
-  const changeView = (view) => {
-    if (view == "month") {
-      setCalendarView("week")
-    }
-    else {
-      setCalendarView("month")
-    }
-  }
+  const [toggleAddtlInfo, setAddtlInfo] = useState(false)
 
   const convertToEvents = async (appointments) => {
     for (let appt of appointments) {
       let customer = await fetchCustomer(appt['customer_id'])
       setEvents([...events, {
-        title: customer['name'].concat(': ', appt['car_issue']),
+        title: customer['name'],
         start: Date.parse(appt['date']),
         end: Date.parse(appt['date']),
         resource: appt
@@ -34,15 +26,13 @@ const ShopCalendar = ({ appointments, customers, fetchCustomer }) => {
   }
 
   useEffect(() => {
-    // console.log(`converting ${appointments}`)
     if (appointments != undefined) {
       convertToEvents(appointments)
     }
   }, [appointments])
-// TODO: onSelectEvent
+  
     return (
-        <div style={{ height: 500, width: 600}}>
-        {/* {console.log(events)} */}
+        <div style={{ height: 500, width: 500}}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -53,7 +43,7 @@ const ShopCalendar = ({ appointments, customers, fetchCustomer }) => {
           min={new Date(2021, 0, 1, 8, 0)} // 8.00 AM
           max={new Date(2021, 0, 1, 17, 0)} // Max will be 6.00 PM!
           style={{
-            fontSize: 15
+            fontSize: '14px'
           }}
         />
       </div>
