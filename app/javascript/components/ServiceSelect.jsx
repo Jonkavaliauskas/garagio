@@ -5,22 +5,20 @@ import ServiceCheckbox from './ServiceCheckbox'
 import Button from './Button'
 
 const ServiceSelect = (props) => {
-  
+
   const [selectedServices, setSelectedServices] = useState([])
 
   const updateServices = (services, serviceName) => {
-    if (services.includes(serviceName))
-    {
+    if (services.includes(serviceName)) {
       // services.filter(currentItem => serviceName !== currentItem);
       services.splice(services.indexOf(serviceName), 1);
       setSelectedServices([...services]);
     }
-    else
-    {
+    else {
       setSelectedServices([...services, serviceName]);
     }
   }
-  
+
   return (
     <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
       <div className="jumbotron jumbotron-fluid bg-transparent">
@@ -95,27 +93,27 @@ const ServiceSelect = (props) => {
             />
           </div>
         </div>
-        <div style={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px'}} className="btn d-flex justify-content-center">
-        <Link
-          to={{
-            pathname: "/chooseshop",
-            props: {
-              year: props.location.state.year,
-              make: props.location.state.make,
-              model: props.location.state.model,
-              body: props.location.state.body,
-              services: selectedServices
-            },
-          }}>
-          <Button
+        <div style={{ textAlign: "center", width: '200px', display: 'block', maxWidth: '300px' }} className="btn d-flex justify-content-center">
+          <Link
+            to={{
+              pathname: "/chooseshop",
+              state: {
+                year: props.location.state.year,
+                make: props.location.state.make,
+                model: props.location.state.model,
+                body: props.location.state.body,
+                services: selectedServices
+              },
+            }}>
+            <Button
               className=""
               text="Submit"
               onClick={
                 console.log("Current selected services: " + selectedServices.toString())
               }
             />
-            </Link>
-          </div>
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>

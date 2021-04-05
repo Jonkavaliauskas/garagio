@@ -3,9 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "../Button";
 import ShopCalendar from "./ShopCalendar";
 import CustomerList from "./CustomerList";
+import Footer from "../Footer";
 
 const ShopDashboard = (props) => {
-  
+
   let history = useHistory();
 
   const [appointments, setAppointments] = useState([]);
@@ -23,8 +24,7 @@ const ShopDashboard = (props) => {
 
     for (var appt of apptsFromServer) {
       const customerData = await fetchCustomer(appt["customer_id"]);
-      if (!(tempCustomers.some(customer => customer['id'] === customerData['id'])))
-      {
+      if (!(tempCustomers.some(customer => customer['id'] === customerData['id']))) {
         tempCustomers.push(customerData);
       }
     }
@@ -58,12 +58,12 @@ const ShopDashboard = (props) => {
         </Link>
       </div>
       <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
-          <div className="col-3 d-flex flex-column justify-content-center align-items-center">
-            <h3>Customers</h3>
-            <div>
-              <CustomerList customers={customers}/>
-            </div>
+        <div className="col-3 d-flex flex-column justify-content-center align-items-center">
+          <h3>Customers</h3>
+          <div>
+            <CustomerList customers={customers} />
           </div>
+        </div>
         <div className="container-fluid d-flex justify-content-center">
           <div>
             <ShopCalendar

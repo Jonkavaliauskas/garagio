@@ -19,8 +19,8 @@ const Login = () => {
                         shopOwnerId: res.id
                     })
                 }
-          });
-      }
+            });
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -32,26 +32,28 @@ const Login = () => {
         <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
             <div className="jumbotron jumbotron-fluid bg-transparent">
                 <div className="container secondary-color">
-                <h1 className="display-4">Shop Owner Login</h1>
-                <hr className="my-4" />
-                <div className="container">
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            <p>Email</p>
-                            <input type="text" name="email" />
-                        </label>
-                        <label>
-                            <p>Password</p>
-                            <input type="password"/>
-                        </label>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <Footer />
+                    <h1 className="display-4">Shop Owner Login</h1>
+                    <hr className="my-4" />
+                    <div className="container">
+                        <form onSubmit={handleSubmit}>
+                            <label>
+                                <p>Email</p>
+                                <input type="text" name="email" required />
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                <p>Password</p>
+                                <input type="password" />
+                            </label>
+                            <div>
+                                <button className="btn btn-lg custom-button" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <Footer />
+
         </div>
     )
 }

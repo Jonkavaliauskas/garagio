@@ -9,7 +9,8 @@ import ServiceSelect from "./components/ServiceSelect";
 import ShopDashboard from "./components/ShopDashboard/ShopDashboard";
 import About from "./components/About";
 import FakeProfile from "./components/FakeProfile";
-import ShopList from "./components/ShopList"
+import ShopList from "./components/ShopList";
+import FinalizeAppointment from "./components/FinalizeAppointment";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
@@ -27,6 +28,7 @@ export default (
       <Route path="/about" exact component={About} />
       <Route path="/fakeprofile" exact component={FakeProfile} />
       <Route path="/chooseshop" exact component={ShopList} />
+      <Route path="/finalizeappointment" exact component={FinalizeAppointment} />
     </Switch>
   </Router>
 );

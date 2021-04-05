@@ -57,7 +57,8 @@ class Api::V1::AppointmentsController < ApplicationController
       :date,
       :car_issue,
       :last_quote,
-      :invoice_number
+      :invoice_number,
+      :car_id
     )
     p['date'] = DateTime.strptime(p['date'], '%Y-%m-%dT%H:%M')
 

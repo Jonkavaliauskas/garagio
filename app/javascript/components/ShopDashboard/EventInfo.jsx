@@ -38,7 +38,7 @@ const EventInfo = ({ event }) => {
     const monthName = months[dateObject.getMonth()]
     const dayName = days[dateObject.getDay()]
 
-    return `${dayName}, ${monthName} ${date} ${year}`
+    return `${dayName}, ${monthName} ${date}, ${year}`
   }
 
   const [apptCar, setApptCar] = useState({});
@@ -51,9 +51,9 @@ const EventInfo = ({ event }) => {
   }, [event])
 
   return (
-    <div className='d-flex flex-column m-4 event-info-box' style={{width: 450, height: 350, float: 'right'}}>
+    <div className='d-flex flex-column m-4 event-info-box' style={{ width: 450, height: 350, float: 'right' }}>
       <h4>{formatDate(dateObject)}</h4>
-      <p className='remove-top-margin'>{dateObject.toLocaleString('en-US', { timeZone: "America/New_York"})}</p>
+      <p className='remove-top-margin'>{dateObject.toLocaleString('en-US', { timeZone: 'UTC' })}</p>
       <div>
         <h5 className='info-header'>{customer["name"]}</h5>
         <p className='information'>{customer["email"]}</p>
