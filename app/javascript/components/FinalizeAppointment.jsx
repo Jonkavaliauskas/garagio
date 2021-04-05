@@ -12,6 +12,7 @@ const FinalizeAppointment = (props) => {
     const CUSTOMER_URL = "http://localhost:3000/api/v1/customers/index"
     const CAR_URL = "http://localhost:3000/api/v1/cars/index"
     const APPOINTMENT_URL = "http://localhost:3000/api/v1/appointments/index"
+    const APPOINTMENT_SHOW_URL = "http://localhost:3000/appointments/"
 
     let history = useHistory();
 
@@ -132,7 +133,7 @@ const FinalizeAppointment = (props) => {
                 let date_string = formatDate(date_obj);
                 let time_string = date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[1].split(":")[0] + ":" + date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[1].split(":")[1] + " " + date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[2];
                 date_string = date_string + " at " + time_string;
-                confirmAppointment("Appointment booked with " + shop.shop_name + " on " + date_string);
+                confirmAppointment("Appointment booked with " + shop.shop_name + " on " + date_string + ". View details at " + APPOINTMENT_SHOW_URL + res.id);
             });
     }
 

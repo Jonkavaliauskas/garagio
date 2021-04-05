@@ -11,6 +11,7 @@ import About from "./components/About";
 import FakeProfile from "./components/FakeProfile";
 import ShopList from "./components/ShopList";
 import FinalizeAppointment from "./components/FinalizeAppointment";
+import AppointmentShow from "./components/AppointmentShow";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
@@ -29,6 +30,7 @@ export default (
       <Route path="/fakeprofile" exact component={FakeProfile} />
       <Route path="/chooseshop" exact component={ShopList} />
       <Route path="/finalizeappointment" exact component={FinalizeAppointment} />
+      <Route path="/appointments/:appointmentId" component={AppointmentShow} />
     </Switch>
   </Router>
 );

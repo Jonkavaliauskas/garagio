@@ -3,16 +3,14 @@ import { useHistory } from "react-router-dom";
 
 const FakeProfile = (props) => {
     const [shop, setShop] = useState({});
-
-    let history = useHistory();
-
+    const history = useHistory();
     const shopURL = "http://localhost:3000/api/v1/shop_owners/";
 
     const fetchShop = async (id) => {
         fetch(shopURL + id)
             .then(res => res.json())
             .then(res => {
-                if (!res) {
+                if (res.success == false) {
                     history.push('/login');
                 }
                 else {
