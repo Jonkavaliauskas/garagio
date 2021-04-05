@@ -66,8 +66,8 @@ const ShopDashboard = (props) => {
           <div>
             <ShopCalendar
               appointments={appointments}
-              customers={customers}
               fetchCustomer={fetchCustomer}
+              shopOwnerId={props.location.state.shopOwnerId}
             />
           </div>
         </div>

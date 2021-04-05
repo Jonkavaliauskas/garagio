@@ -36,8 +36,9 @@ class Api::V1::AppointmentsController < ApplicationController
       :last_quote,
       :invoice_number
     )
-    p['date'] = DateTime.strptime(p['date'], '%Y-%m-%dT%H:%M')
-
+    if p['date']
+      p['date'] = DateTime.strptime(p['date'], '%Y-%m-%dT%H:%M')
+    end
     return p
   end
 end
