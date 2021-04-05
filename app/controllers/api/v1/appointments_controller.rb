@@ -7,21 +7,44 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def create
-    Appointment.create(appointment_params)
+    appointment = Appointment.new(appointment_params)
+
+    if appointment.save
+      render json: appointment, include: [:customer, :shop_owner, :car]
+    else
+      render json: { success: false, reason: "appointment save not successful" }
+    end
   end
 
   def show
-    appointment = Appointment.find(params[:id])
-    render json: appointment, include: [:customer, :shop_owner, :car]
+    appointment = Appointment.find_by(id: params[:id])
+
+    if appointment
+      render json: appointment, include: [:customer, :shop_owner, :car]
+    else
+      render json: { success: false, reason: "appointment not found" }
+    end
   end
 
   def update
-    appointment = Appointment.find(params[:id])
-    appointment.update(appointment_params)
+    appointment = Appointment.find_by(id: params[:id])
+
+    if appointment
+      if appointment.update(appointment_params)
+        render json: appointment, include: [:customer, :shop_owner, :car]
+      else
+        render json: { success: false, reason: "appointment update not successful" }
+      end
+    else
+      render json: { success: false, reason: "appointment not found" }
+    end
   end
 
   def destroy
-    Appointment.find(params[:id]).destroy
+    Appointment.find_by(id: params[:id]).destroy
+
+    appointments = Appointment.all
+    render json: appointments
   end
 
   private

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../Button";
 import ShopCalendar from "./ShopCalendar";
 import CustomerList from "./CustomerList";
 
 const ShopDashboard = (props) => {
   
+  let history = useHistory();
+
   const [appointments, setAppointments] = useState([]);
   const [customers, setCustomers] = useState([]);
 

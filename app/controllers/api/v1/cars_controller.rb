@@ -7,21 +7,44 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def create
-    Car.create(car_params)
+    car = Car.new(car_params)
+
+    if car.save
+      render json: car, include: [:customer]
+    else
+      render json: { success: false, reason: "car save not successful" }
+    end
   end
 
   def show
-    car = Car.find(params[:id])
-    render json: car, include: [:customer]
+    car = Car.find_by(id: params[:id])
+
+    if car  
+      render json: car, include: [:customer]
+    else
+      render json: { success: false, reason: "car not found" }
+    end
   end
 
   def update
-    car = Car.find(params[:id])
-    car.update(car_params)
+    car = Car.find_by(id: params[:id])
+
+    if car
+      if car.update(car_params)
+        render json: car, include: [:customer]
+      else
+        render json: { success: false, reason: "car update not successful" }
+      end
+    else
+      render json: { success: false, reason: "car not found" }
+    end
   end
 
   def destroy
-    Car.find(params[:id]).destroy
+    Car.find_by(id: params[:id]).destroy
+
+    cars = Car.all
+    render json: cars
   end
 
   private
