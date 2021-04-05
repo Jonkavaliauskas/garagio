@@ -5,13 +5,9 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ShopCalendar from "./components/ShopDashboard/ShopCalendar";
 import PhotoSubmitForm from "./components/PhotoSubmitForm";
-<<<<<<< HEAD
 import ServiceSelect from "./components/ServiceSelect";
 import ShopDashboard from "./components/ShopDashboard/ShopDashboard";
-=======
-import ServiceSelect from "./components/ServiceSelect"
 import About from "./components/About";
->>>>>>> front-end
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
@@ -25,11 +21,8 @@ export default (
       <Route path="/calendar" exact component={ShopCalendar} />
       <Route path="/photosubmitform" exact component={PhotoSubmitForm} />
       <Route path="/serviceselect" exact component={ServiceSelect} />
-<<<<<<< HEAD
       <Route path="/dashboard" exact component={ShopDashboard} />
-=======
       <Route path="/about" exact component={About} />
->>>>>>> front-end
     </Switch>
   </Router>
 );
