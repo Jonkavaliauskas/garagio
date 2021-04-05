@@ -39,7 +39,12 @@ class Api::V1::ShopOwnersController < ApplicationController
   end
 
   def create
-    ShopOwner.create(shop_owner_params)
+    shop_owner = ShopOwner.new(shop_owner_params)
+    if (shop_owner.save)
+      render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
+    else
+      render json: {result: "fail"}
+    end
   end
 
   def show

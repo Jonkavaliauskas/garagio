@@ -7,7 +7,7 @@ class ShopOwner < ApplicationRecord
     has_many :reviews
     
     validates :shop_name, presence: true
-    validates :email, presence: true
+    validates :email, presence: true, uniqueness: true
 
     def average_review
         if (self.reviews.size != 0)

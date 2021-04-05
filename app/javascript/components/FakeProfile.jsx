@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 
 const FakeProfile = (props) => {
     const [shop, setShop] = useState({});
+
+    let history = useHistory();
 
     const shopURL = "http://localhost:3000/api/v1/shop_owners/";
 
@@ -19,7 +22,13 @@ const FakeProfile = (props) => {
     }
 
     useEffect(() => {
-        fetchShop(props.location.state.shopOwnerId);
+        if (props.location.state) {
+            fetchShop(props.location.state.shopOwnerId);
+        }
+        else {
+            history.push('/login');
+        }
+            
     }, [])
 
     return (
