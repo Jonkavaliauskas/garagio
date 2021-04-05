@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import CustomerBox from "./CustomerBox";
 import Button from "../Button";
 import ShopCalendar from "./ShopCalendar";
+import CustomerList from "./CustomerList";
 
 const ShopDashboard = (props) => {
+  
   const [appointments, setAppointments] = useState([]);
   const [customers, setCustomers] = useState([]);
 
@@ -15,12 +16,17 @@ const ShopDashboard = (props) => {
   const getAppointments = async () => {
     const shopOwner = await fetchShopOwner(props.location.state.shopOwnerId);
     const apptsFromServer = shopOwner["appointments"];
+    var tempCustomers = [];
     setAppointments(apptsFromServer);
 
-    for (const appt of apptsFromServer) {
+    for (var appt of apptsFromServer) {
       const customerData = await fetchCustomer(appt["customer_id"]);
-      setCustomers([...customers, customerData]);
+      if (!(tempCustomers.some(customer => customer['id'] === customerData['id'])))
+      {
+        tempCustomers.push(customerData);
+      }
     }
+    setCustomers(tempCustomers);
   };
 
   const fetchShopOwner = async (id) => {
@@ -42,27 +48,19 @@ const ShopDashboard = (props) => {
       <div
         style={{
           position: "fixed",
-          // left: '93%',
-          // up: '4%'
         }}
         className="m-2"
       >
-        <Link to="/register">
+        <Link to="/">
           <Button className="btn btn-lg custom-button" text="Sign Out" />
         </Link>
       </div>
       <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
           <div className="col-3 d-flex flex-column justify-content-center align-items-center">
             <h3>Customers</h3>
-            {customers.map((customer) => (
-              <CustomerBox
-                key={customer["id"]}
-                name={customer["name"]}
-                email={customer["email"]}
-                phone={customer["phone"]}
-                className="list-group-item"
-              />
-            ))}
+            <div>
+              <CustomerList customers={customers}/>
+            </div>
           </div>
         <div className="container-fluid d-flex justify-content-center">
           <div>

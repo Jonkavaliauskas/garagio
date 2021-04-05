@@ -38,23 +38,20 @@ const EventInfo = ({ event }) => {
     const monthName = months[dateObject.getMonth()]
     const dayName = days[dateObject.getDay()]
 
-    return `${dayName}, ${date} ${monthName} ${year}`
+    return `${dayName}, ${monthName} ${date} ${year}`
   }
 
-  const [appt, setAppt] = useState(event['appt'])
-  const [customer, setCustomer] = useState(event['customer'])
-  const [dateObject, setDateObject] = useState(new Date(appt['date']))
-  const [apptCar, setApptCar] = useState(appt['car_id'])
+  const [apptCar, setApptCar] = useState({});
+  const customer = event['customer'];
+  const appt = event['appt'];
+  const dateObject = new Date(appt['date']);
 
   useEffect(() => {
-    setAppt(event['appt']);
-    setCustomer(event['customer'])
-    setDateObject(new Date(appt['date']))
-    fetchApptCar(appt['car_id']);
+    fetchApptCar(event['appt']['car_id']);
   }, [event])
 
   return (
-    <div className='d-flex flex-column m-4 event-info-box' style={{width: 500, height: 350, float: 'right'}}>
+    <div className='d-flex flex-column m-4 event-info-box' style={{width: 450, height: 350, float: 'right'}}>
       <h4>{formatDate(dateObject)}</h4>
       <p className='remove-top-margin'>{dateObject.toLocaleString('en-US', { timeZone: "America/New_York"})}</p>
       <div>
@@ -64,7 +61,7 @@ const EventInfo = ({ event }) => {
       </div>
       <div>
         <h5 className="info-header">Vehicle Info</h5>
-        <p className="information">{apptCar['year']} {apptCar['make']} {apptCar['model']}</p>
+        <p className="information">{apptCar["year"]} {apptCar["make"]} {apptCar["model"]}</p>
       </div>
       <div>
         <h5 className='info-header'>Vehicle Issue</h5>
