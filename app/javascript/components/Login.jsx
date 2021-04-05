@@ -11,7 +11,7 @@ const Login = () => {
         fetch(USER_URL + formData.get("email"))
             .then(res => res.json())
             .then(res => {
-                if (res.result) {
+                if (res.success == false) {
                     window.location.reload();
                 }
                 else {

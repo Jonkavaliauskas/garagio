@@ -25,11 +25,11 @@ const Register = () => {
         fetch(USER_URL, configObj)
             .then(res => res.json())
             .then(res => {
-                if (res.result) {
+                if (!res.success) {
                     window.location.reload();
                 }
                 else {
-                    history.push('/fakeprofile', {
+                    history.push('/dashboard', {
                         shopOwnerId: res.id
                     })
                 }

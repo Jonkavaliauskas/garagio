@@ -9,56 +9,73 @@ class Api::V1::ShopOwnersController < ApplicationController
     # lookup by email, return user show page
     if params[:email]
       shop_owner = ShopOwner.find_by(email: params[:email])
+      
       if shop_owner
         render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
       else
-        render json: {result: "not found"}
+        render json: { success: false, reason: "shop owner not found" }
       end
-      return
-    end
-
-    if params[:address]
-      location = params[:address]
-    elsif params[:lat] and params[:lng]
-      location = [params[:lat], params[:lng]]
-    end
-
-    if location
-      if params[:distance]
-        shop_owners = ShopOwner.within(params[:distance], :origin=>location)
-      else
-        shop_owners = ShopOwner.all
-      end
-
-      result = ShopOwner.json_with_distance(shop_owners, location)
-      render json: result
     else
-      shop_owners = ShopOwner.all
-      render json: shop_owners, methods: :average_review
+      if params[:address]
+        location = params[:address]
+      elsif params[:lat] and params[:lng]
+        location = [params[:lat], params[:lng]]
+      end
+  
+      if location
+        # render sorted and distance filtered index page
+        if params[:distance]
+          shop_owners = ShopOwner.within(params[:distance], :origin=>location)
+        else
+          shop_owners = ShopOwner.all
+        end
+  
+        result = ShopOwner.json_with_distance(shop_owners, location)
+        render json: result
+      else
+        # render index page
+        shop_owners = ShopOwner.all
+        render json: shop_owners, methods: :average_review
+      end
     end
   end
 
   def create
     shop_owner = ShopOwner.new(shop_owner_params)
+    
     if (shop_owner.save)
       render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
     else
-      render json: {result: "fail"}
+      render json: { success: false, reason: "shop owner save not successful" }
     end
   end
 
   def show
-    shop_owner = ShopOwner.find(params[:id])
-    render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
+    shop_owner = ShopOwner.find_by(id: params[:id])
+
+    if shop_owner
+      render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
+    else
+      render json: { success: false, reason: "shop owner not found" }
+    end
   end
 
   def update
-    shop_owner = ShopOwner.find(params[:id])
-    shop_owner.update(shop_owner_params)
+    shop_owner = ShopOwner.find_by(id: params[:id])
+
+    if shop_owner
+      if shop_owner.update(shop_owner_params)
+        render json: shop_owner, include: [:appointments, :reviews], methods: :average_review
+      else
+        render json: { success: false, reason: "shop owner save not successful" }
+      end
+    else
+      render json: { success: false, reason: "shop owner not found" }
+    end
   end
 
   def destroy
-    ShopOwner.find(params[:id]).destroy
+    ShopOwner.find_by(id: params[:id]).destroy
   end
 
   private
