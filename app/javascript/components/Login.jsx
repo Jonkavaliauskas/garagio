@@ -15,7 +15,7 @@ const Login = () => {
                     window.location.reload();
                 }
                 else {
-                    history.push('/fakeprofile', {
+                    history.push('/dashboard', {
                         shopOwnerId: res.id
                     })
                 }

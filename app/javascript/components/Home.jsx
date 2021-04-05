@@ -107,18 +107,31 @@ class Home extends React.Component {
               text='Login'
             />
           </Link>
-        &nbsp;
-        <Link
+          &nbsp;
+          <Link
             to={{
-              pathname: "/dashboard",
+              pathname: "/register",
               state: {
                 shopOwnerId: '10'
               }
             }}>
             <Button
               className="btn btn-lg custom-button"
-              text='Dashboard'
+              text='Register'
             />
+          </Link>
+          &nbsp;
+          <Link
+              to={{
+                pathname: "/dashboard",
+                state: {
+                  shopOwnerId: '10'
+                }
+              }}>
+              <Button
+                className="btn btn-lg custom-button"
+                text='Dashboard'
+              />
           </Link>
           &nbsp;
         </div>

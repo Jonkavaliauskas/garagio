@@ -13,7 +13,7 @@ const Register = () => {
             address: formData.get("address"),
             shop_name: formData.get("shop_name")
         }
-        
+
         const configObj = {
             method: 'POST',
             headers: {

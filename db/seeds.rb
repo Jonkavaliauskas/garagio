@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-
 Customer.destroy_all
 Car.destroy_all
 ShopOwner.destroy_all
@@ -22,30 +21,28 @@ nico = Customer.create(name: "Nico", email: "nico@yale.edu")
 prius = Car.create(customer: chad, make: "Toyota", model: "Prius", year: 2007)
 bugatti = Car.create(customer: chad, make: "Bugatti", model: "Veyron", year: 2011)
 
-carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511", lat: 41.314561330447134, lng: -72.92512784437598)
-jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511", lat: 41.311811354063664, lng: -72.92942735786822)
+carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511")
+jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
 
-a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
-Appointment.create(shop_owner: carguys, customer: carl, car: bugatti, date: DateTime.new(2021,4,2,2,30), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
+Appointment.create(shop_owner: carguys, customer: carl, car: bugatti, date: DateTime.new(2021,4,2,2,30), car_issue: "car smells")
 Appointment.create(shop_owner: carguys, customer: chad, car: bugatti, date: DateTime.new(2021,4,3,4,6), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
 
-
-r1 = Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
-
-
-car = Car.create(customer: chad, make: "Toyota", model: "Prius")
-
-# Ingests from CSV to seed vehicle_info db
-csv_text = File.read(Rails.root.join('db', 'lib', 'seeds', 'vehicle_info_seed.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-    t = VehicleInfo.new
-    t.year = row['year']
-    t.make = row['make']
-    t.model = row['model']
-    t.body_styles = row['body_styles']
-    t.save
-end
+Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
 r2 = Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
 r3 = Review.create(shop_owner: carguys, customer: nico, rating: 4, assessment: "my car smells a lot better now")
 r4 = Review.create(shop_owner: carguys, customer: carl, rating: 2, assessment: "the owner was very impolite")
+
+# Ingests from CSV to seed vehicle_info db
+if VehicleInfo.all.count == 0
+    csv_text = File.read(Rails.root.join('db', 'lib', 'seeds', 'vehicle_info_seed.csv'))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+    csv.each do |row|
+        t = VehicleInfo.new
+        t.year = row['year']
+        t.make = row['make']
+        t.model = row['model']
+        t.body_styles = row['body_styles']
+        t.save
+    end
+end
