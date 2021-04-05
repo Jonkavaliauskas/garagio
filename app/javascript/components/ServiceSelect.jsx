@@ -20,8 +20,6 @@ const ServiceSelect = (props) => {
       setSelectedServices([...services, serviceName]);
     }
   }
-
-  // const services = [technicalCheck, airConditioning, oilChange, tireChange, transmission, brakes, inspection, leakage, glass, other]
   
   return (
     <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
@@ -97,7 +95,7 @@ const ServiceSelect = (props) => {
             />
           </div>
         </div>
-        <div styles={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px'}} className="btn d-flex justify-content-center">
+        <div style={{textAlign: "center", width: '200px', display: 'block', maxWidth: '300px'}} className="btn d-flex justify-content-center">
         <Link
           to={{
             pathname: "/chooseshop",
@@ -113,10 +111,6 @@ const ServiceSelect = (props) => {
               className=""
               text="Submit"
               onClick={
-                // console.log(
-                //   "Submitted: " + props.location.state.year + " " + props.location.state.make + " " + 
-                //   props.location.state.model + " " + props.location.state.body +
-                //     " " + selectedServices)
                 console.log("Current selected services: " + selectedServices.toString())
               }
             />
