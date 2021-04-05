@@ -27,6 +27,7 @@
   }
   .custom-button.btn {
     background-color: #293241;
+    font-size: small;
     color: #FFF;
     border: none;
   }
@@ -49,8 +50,59 @@
     width: 100%;
     opacity: 0.4;
   }
-  footer {
-    margin-top: 30px;
+  .footer {
+    margin-top: 20%;
     text-align: center;
   }
+  .container.footer {
+    text-align: center;
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   
+  }
+  .login-container {
+    text-align: right;
+    left: 68%;
+    top: 2%;
+    position: absolute;
+} 
+  .vehicle-dropdown {
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    /* align-items: center;
+    justify-content: center; */
+  }
+  .vehicle-select-submit {
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  .shop-list-item {
+    width: 650px;
+    display:flex;
+    /* justify-content: center; */
+    position:relative;
+    /* border-style: groove; */
+    padding-bottom: 5%;
+  }
+  .shop-list-container {
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .book-now-button {
+    position: absolute;
+    right: 0;
+    }
+  /* .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+  } */
