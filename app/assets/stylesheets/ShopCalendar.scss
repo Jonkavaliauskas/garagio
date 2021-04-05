@@ -1,0 +1,29 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-event-content {
+    font-size: 10px
+}
+
+.rbc-event {
+    padding: 1px 1px 1px 1px;
+    // text-align: center;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-content: center
+}
+
+.event-info-box {
+    background: #F7F6F3;
+    border: 1px solid #131313;
+    align-content: left;
+    padding: 20px;
+}
+
+.remove-top-margin {
+    margin-top: -6px;
+}
+
+.info-header {
+    margin-bottom: -2px;
+}

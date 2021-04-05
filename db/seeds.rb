@@ -14,7 +14,7 @@ ShopOwner.destroy_all
 Appointment.destroy_all
 Review.destroy_all
 
-chad = Customer.create(name: "Chad", email: "chad.palmer@yale.edu")
+chad = Customer.create(name: "Chad Palmer", email: "chad.palmer@yale.edu", phone: "(123) 456-7890")
 jonas = Customer.create(name: "Jonas", email: "jonas@yale.edu")
 carl = Customer.create(name: "Carl", email: "carl@yale.edu")
 nico = Customer.create(name: "Nico", email: "nico@yale.edu")
@@ -22,10 +22,13 @@ nico = Customer.create(name: "Nico", email: "nico@yale.edu")
 prius = Car.create(customer: chad, make: "Toyota", model: "Prius", year: 2007)
 bugatti = Car.create(customer: chad, make: "Bugatti", model: "Veyron", year: 2011)
 
-carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511", lat: 1.2, lng: 1.2)
-jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511", lat: 1.2, lng: 1.2)
+carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511", lat: 41.314561330447134, lng: -72.92512784437598)
+jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511", lat: 41.311811354063664, lng: -72.92942735786822)
 
-a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.now, car_issue: "ac broke")
+a1 = Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
+Appointment.create(shop_owner: carguys, customer: carl, car: bugatti, date: DateTime.new(2021,4,2,2,30), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+Appointment.create(shop_owner: carguys, customer: chad, car: bugatti, date: DateTime.new(2021,4,3,4,6), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+
 
 r1 = Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
 

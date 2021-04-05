@@ -109,10 +109,15 @@ class Home extends React.Component {
           </Link>
         &nbsp;
         <Link
-            to="/register">
+            to={{
+              pathname: "/dashboard",
+              state: {
+                shopOwnerId: '10'
+              }
+            }}>
             <Button
               className="btn btn-lg custom-button"
-              text='Register'
+              text='Dashboard'
             />
           </Link>
           &nbsp;
@@ -135,7 +140,6 @@ class Home extends React.Component {
                     onChange={(value) => {
                       this.set_year(value);
                       this.fetchData('Make', value[0].value[0]);
-                      // this.setState({ makes_options: this.fetchData('Make', value[0].value[0]) });
                     }}
                     options={this.state.year_options}
                   />
@@ -172,7 +176,6 @@ class Home extends React.Component {
 
                 </div>
 
-                {/* UNCOMMENT BELOW TO CONNECT (update routes.jsx and enter below) */}
                 <Link to={{
                   pathname: '/serviceselect',
                   state: {

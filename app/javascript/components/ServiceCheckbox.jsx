@@ -7,8 +7,7 @@ const ServiceCheckbox = ({ text, state, updateState }) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
-        // console.log('clicked label');
+        
         setTextColor(textColor === '#000000' ? '#0D3DE5' : '#000000');
         setChecked(textColor === '#000000' ? true : false);
         updateState(state, text);
