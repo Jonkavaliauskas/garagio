@@ -64,7 +64,7 @@
   }
   .login-container {
     text-align: right;
-    left: 68%;
+    left: 72%;
     top: 2%;
     position: absolute;
 } 
@@ -83,10 +83,18 @@
   .shop-list-item {
     width: 650px;
     display:flex;
+    flex-direction: row;
     /* justify-content: center; */
     position:relative;
     /* border-style: groove; */
     padding-bottom: 5%;
+  }
+  .shop-list-item-text {
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    position:relative;
+    padding-left:5px;
   }
   .shop-list-container {
     width: 100%;
@@ -96,7 +104,8 @@
   }
   .book-now-button {
     position: absolute;
-    right: 0;
+    right: 20px;
+    top: 15px;
     }
   /* .footer {
     position: fixed;

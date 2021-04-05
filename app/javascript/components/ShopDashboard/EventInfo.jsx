@@ -31,8 +31,8 @@ const EventInfo = ({ event, shopOwnerId }) => {
     const monthName = months[dateObject.getMonth()];
     const dayName = days[dateObject.getDay()];
 
-    return `${dayName}, ${monthName} ${date} ${year}`;
-  };
+    return `${dayName}, ${monthName} ${date}, ${year}`
+  }
 
   const [apptCar, setApptCar] = useState({});
   const [carIssue, setCarIssue] = useState('');
@@ -58,15 +58,15 @@ const EventInfo = ({ event, shopOwnerId }) => {
         "Content-Type": "application/json",
       },
       // body: JSON.stringify(data),
-      body: JSON.stringify( {
+      body: JSON.stringify({
         car_issue: formData.get("car_issue")
       })
     };
 
     fetch(USER_URL + appt['id'], configObj)
-    .then(res => {
-      console.log(res);
-    })
+      .then(res => {
+        console.log(res);
+      })
     // .then(
     //     history.push({
     //       pathname: '/dashboard', 

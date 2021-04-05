@@ -5,8 +5,8 @@ import Button from './Button'
 import Footer from './Footer'
 
 
-const ShopList = ({ year, make, model, body, services, zipcode }) => {
-  const [selectedShop, setSelectedShop] = useState()
+const ShopList = (props) => {
+  let { year, make, model, body, services, zipcode } = props.location.state;
   const [shops, setShops] = useState([])
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const ShopList = ({ year, make, model, body, services, zipcode }) => {
   // Fetch Tasks
   const fetchShops = async () => {
     zipcode = '06511'
-    const res = await fetch('/api/v1/shop_owners/index?address=' + zipcode + '&distance=5')
+    const res = await fetch('/api/v1/shop_owners/index?address=' + zipcode + '&distance=50')
     const data = await res.json()
 
     return data
@@ -51,8 +51,9 @@ const ShopList = ({ year, make, model, body, services, zipcode }) => {
             </div>
           </div>
         </div>
+        <Footer />
+
       </div>
-      <Footer />
 
     </>
 

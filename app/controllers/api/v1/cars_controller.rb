@@ -55,7 +55,7 @@ class Api::V1::CarsController < ApplicationController
       :make,
       :model,
       :year,
-      :fuel_type
+      :body_style
     )
   end
 end

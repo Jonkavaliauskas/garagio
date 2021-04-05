@@ -12,26 +12,44 @@ Car.destroy_all
 ShopOwner.destroy_all
 Appointment.destroy_all
 Review.destroy_all
+VehicleInfo.destroy_all
 
 chad = Customer.create(name: "Chad Palmer", email: "chad.palmer@yale.edu", phone: "(123) 456-7890")
-jonas = Customer.create(name: "Jonas", email: "jonas@yale.edu")
-carl = Customer.create(name: "Carl", email: "carl@yale.edu")
-nico = Customer.create(name: "Nico", email: "nico@yale.edu")
+jonas = Customer.create(name: "Jonas Kavaliauskas", email: "jonas.kavaliauskas@yale.edu", phone: "(123) 456-7890")
+carl = Customer.create(name: "Carl Viyar", email: "carl.viyar@yale.edu", phone: "(123) 456-7890")
+nico = Customer.create(name: "Nico Burbano", email: "nico.burbano@yale.edu", phone: "(123) 456-7890")
 
-prius = Car.create(customer: chad, make: "Toyota", model: "Prius", year: 2007)
-bugatti = Car.create(customer: chad, make: "Bugatti", model: "Veyron", year: 2011)
+prius = Car.create(customer: chad, make: "Toyota", model: "Prius", year: 2007, body_style: "Hatchback")
+bugatti = Car.create(customer: jonas, make: "Bugatti", model: "Veyron", year: 2011, body_style: "Roadster")
+tesla1 = Car.create(customer: carl, make: "Tesla", model: "Model S", year: 2020, body_style: "Sedan")
+tesla2 = Car.create(customer: nico, make: "Tesla", model: "Model 3", year: 2021, body_style: "Sedan")
 
 carguys = ShopOwner.create(shop_name: "Car Guys", email: "car_guys@gmail.com", address: "90 Prospect St, New Haven, CT 06511")
-jeffcars = ShopOwner.create(shop_name: "Jeff Cars", email: "jeff_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
+jeffcars = ShopOwner.create(shop_name: "Jeff's Cars", email: "jeffs_cars@gmail.com", address: "304 York St, New Haven, CT 06511")
+distantshop = ShopOwner.create(shop_name: "Distant Shop, Inc.", email: "distant_shop@gmail.com", address: "110 Willow St, Meriden, CT 06450")
+terrystires = ShopOwner.create(shop_name: "Terry's Tires", email: "terrys_tires@gmail.com", address: "129 Plains Rd, Milford, CT 06460")
 
 Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
-Appointment.create(shop_owner: carguys, customer: carl, car: bugatti, date: DateTime.new(2021,4,2,2,30), car_issue: "car smells")
-Appointment.create(shop_owner: carguys, customer: chad, car: bugatti, date: DateTime.new(2021,4,3,4,6), car_issue: "Switchin' the positions for you Cookin' in the kitchen and I'm in the bedroom I'm in the Olympics, way I'm jumpin' through hoop Know my love infinite, nothin' I wouldn't doThat I won't do, switchin' for you")
+Appointment.create(shop_owner: carguys, customer: jonas, car: bugatti, date: DateTime.new(2021,4,6,2,30), car_issue: "car smells")
+Appointment.create(shop_owner: carguys, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,4,6), car_issue: "car broke")
+Appointment.create(shop_owner: carguys, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,4,6), car_issue: "weird noise")
 
-Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
-r2 = Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
-r3 = Review.create(shop_owner: carguys, customer: nico, rating: 4, assessment: "my car smells a lot better now")
-r4 = Review.create(shop_owner: carguys, customer: carl, rating: 2, assessment: "the owner was very impolite")
+Appointment.create(shop_owner: jeffcars, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
+Appointment.create(shop_owner: jeffcars, customer: jonas, car: bugatti, date: DateTime.new(2021,4,6,2,30), car_issue: "car smells")
+Appointment.create(shop_owner: jeffcars, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,4,6), car_issue: "car broke")
+Appointment.create(shop_owner: jeffcars, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,4,6), car_issue: "weird noise")
+    
+Review.create(shop_owner: carguys, customer: chad, rating: 3, assessment: "fixed issue quickly and correctly!")
+Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
+Review.create(shop_owner: carguys, customer: nico, rating: 2, assessment: "my car smells a lot better now")
+Review.create(shop_owner: carguys, customer: carl, rating: 2, assessment: "the owner was very impolite")
+
+Review.create(shop_owner: jeffcars, customer: chad, rating: 3, assessment: "fixed issue quickly and correctly!")
+Review.create(shop_owner: jeffcars, customer: jonas, rating: 3, assessment: "destroyed my vehicle")
+Review.create(shop_owner: jeffcars, customer: carl, rating: 5, assessment: "the owner was very impolite")
+
+Review.create(shop_owner: distantshop, customer: nico, rating: 3.5, assessment: "fixed issue quickly and correctly!")
+Review.create(shop_owner: terrystires, customer: chad, rating: 2, assessment: "fixed issue quickly and correctly!")
 
 # Ingests from CSV to seed vehicle_info db
 if VehicleInfo.all.count == 0

@@ -96,10 +96,10 @@ class Home extends React.Component {
   render() {
     const { year, make, model, body } = this.state;
     return (
-      <div>
+      <div >
         <div className="login-container">
           Shop Owners:
-          &nbsp;
+          &nbsp;&nbsp;
           <Link
             to="/login">
             <Button
@@ -120,30 +120,35 @@ class Home extends React.Component {
               text='Register'
             />
           </Link>
-          &nbsp;
+          {/* &nbsp;
           <Link
-              to={{
-                pathname: "/dashboard",
-                state: {
-                  shopOwnerId: '10'
-                }
-              }}>
-              <Button
-                className="btn btn-lg custom-button"
-                text='Dashboard'
-              />
-          </Link>
+            to={{
+              pathname: "/dashboard",
+              state: {
+                shopOwnerId: '10'
+              }
+            }}>
+            <Button
+              className="btn btn-lg custom-button"
+              text='Dashboard'
+            />
+          </Link> */}
           &nbsp;
         </div>
 
+        {/* <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center" style={{ boxSizing: "content-box", backgroundSize: "auto", backgroundImage: "url('https://wallpaper-house.com/data/out/6/wallpaper2you_115491.jpg')" }}> */}
         <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
           <div className="jumbotron jumbotron-fluid bg-transparent">
 
             <div className="container secondary-color">
               <h1 className="display-4">Garagio</h1>
+              {/* <p className="lead">
+                Connecting Vehicle Owners to Auto Shops Since 2021
+          </p> */}
               <p className="lead">
-                Connecting vehicle owners with auto shops since 2021
+                Enter your car details below to get connected to an Auto Shop!
           </p>
+
               <hr className="my-4" />
               <div className='vehicle-select-submit'>
                 <div className="vehicle-dropdown">
@@ -155,9 +160,10 @@ class Home extends React.Component {
                       this.fetchData('Make', value[0].value[0]);
                     }}
                     options={this.state.year_options}
+                    required
                   />
-                &nbsp;
-                <VehicleOptions
+                  &nbsp;
+                  <VehicleOptions
                     year={this.state.year}
                     make_model_year='Make'
                     onChange={(value) => {
@@ -166,9 +172,10 @@ class Home extends React.Component {
                     }}
                     disabled={year === ''}
                     options={this.state.make_options}
+                    required
                   />
-                &nbsp;
-                <VehicleOptions
+                  &nbsp;
+                  <VehicleOptions
                     make_model_year='Model'
                     onChange={(value) => {
                       this.set_model(value);
@@ -177,8 +184,8 @@ class Home extends React.Component {
                     disabled={year === '' || make === ''}
                     options={this.state.model_options}
                   />
-                &nbsp;
-                <VehicleOptions
+                  &nbsp;
+                  <VehicleOptions
                     make_model_year='Body'
                     onChange={(value) => {
                       this.set_body(value);
@@ -188,7 +195,7 @@ class Home extends React.Component {
                   />
 
                 </div>
-
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <Link to={{
                   pathname: '/serviceselect',
                   state: {
@@ -198,13 +205,13 @@ class Home extends React.Component {
                     body: this.state.body
                   }
                 }}>
-                <Button
-                  className="btn btn-lg custom-button"
-                  text='Submit'
-                  onClick={() => console.log("Submitted: " + this.state.year + " " + this.state.make + " " + this.state.model + " " + this.state.body)}
-                />
-                </Link>
 
+                  <Button
+                    className="btn btn-lg custom-button"
+                    text='Submit'
+                    onClick={() => console.log("Submitted: " + this.state.year + " " + this.state.make + " " + this.state.model + " " + this.state.body)}
+                  />
+                </Link>
 
               </div>
 
@@ -216,7 +223,7 @@ class Home extends React.Component {
           </div>
 
         </div>
-      </div>
+      </div >
     );
   }
 

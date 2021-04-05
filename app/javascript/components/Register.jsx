@@ -25,7 +25,7 @@ const Register = () => {
         fetch(USER_URL, configObj)
             .then(res => res.json())
             .then(res => {
-                if (!res.success) {
+                if (res.success == false) {
                     window.location.reload();
                 }
                 else {
@@ -33,8 +33,8 @@ const Register = () => {
                         shopOwnerId: res.id
                     })
                 }
-          });
-      }
+            });
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -46,38 +46,43 @@ const Register = () => {
         <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
             <div className="jumbotron jumbotron-fluid bg-transparent">
                 <div className="container secondary-color">
-                <h1 className="display-4">Register a New Shop</h1>
-                <hr className="my-4" />
-                <div className="container">
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            <p>Shop Name</p>
-                            <input type="text" name="shop_name" />
-                        </label>
-                        <label>
-                            <p>Address</p>
-                            <input type="text" name="address" />
-                        </label>
-                        <label>
-                            <p>Email</p>
-                            <input type="text" name="email" />
-                        </label>
-                        <label>
-                            <p>Password</p>
-                            <input type="password" name="password_field" />
-                        </label>
-                        <label>
-                            <p>Confirm Password</p>
-                            <input type="password" name="confirm_password_field" />
-                        </label>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <Footer />
+                    <h1 className="display-4">Register a New Shop</h1>
+                    <hr className="my-4" />
+                    <div className="container">
+                        <form onSubmit={handleSubmit}>
+                            <label>
+                                <p>Shop Name</p>
+                                <input type="text" name="shop_name" />
+                            </label>
+                            &nbsp;
+                            <label>
+                                <p>Address</p>
+                                <input type="text" name="address" />
+                            </label>
+                            &nbsp;
+                            <label>
+                                <p>Email</p>
+                                <input type="text" name="email" />
+                            </label>
+                            &nbsp;
+                            <label>
+                                <p>Password</p>
+                                <input type="password" name="password_field" />
+                            </label>
+                            &nbsp;
+                            <label>
+                                <p>Confirm Password</p>
+                                <input type="password" name="confirm_password_field" />
+                            </label>
+                            <div>
+                                <button className="btn btn-lg custom-button" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <Footer />
+
         </div>
     )
 }
