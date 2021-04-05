@@ -12,7 +12,6 @@ Car.destroy_all
 ShopOwner.destroy_all
 Appointment.destroy_all
 Review.destroy_all
-VehicleInfo.destroy_all
 
 chad = Customer.create(name: "Chad Palmer", email: "chad.palmer@yale.edu", phone: "(123) 456-7890")
 jonas = Customer.create(name: "Jonas Kavaliauskas", email: "jonas.kavaliauskas@yale.edu", phone: "(123) 456-7890")
@@ -34,24 +33,24 @@ Appointment.create(shop_owner: carguys, customer: jonas, car: bugatti, date: Dat
 Appointment.create(shop_owner: carguys, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,4,6), car_issue: "car broke")
 Appointment.create(shop_owner: carguys, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,4,6), car_issue: "weird noise")
 
-Appointment.create(shop_owner: jeffcars, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
-Appointment.create(shop_owner: jeffcars, customer: jonas, car: bugatti, date: DateTime.new(2021,4,6,2,30), car_issue: "car smells")
-Appointment.create(shop_owner: jeffcars, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,4,6), car_issue: "car broke")
-Appointment.create(shop_owner: jeffcars, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,4,6), car_issue: "weird noise")
+Appointment.create(shop_owner: jeffcars, customer: chad, car: prius, date: DateTime.new(2021,4,21,5,30), car_issue: "ac broke")
+Appointment.create(shop_owner: jeffcars, customer: jonas, car: bugatti, date: DateTime.new(2021,4,8,2,30), car_issue: "car smells")
+Appointment.create(shop_owner: jeffcars, customer: carl, car: tesla1, date: DateTime.new(2021,4,12,4,6), car_issue: "car broke")
+Appointment.create(shop_owner: jeffcars, customer: nico, car: tesla2, date: DateTime.new(2021,4,14,4,6), car_issue: "weird noise")
     
-Review.create(shop_owner: carguys, customer: chad, rating: 3, assessment: "fixed issue quickly and correctly!")
+Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
 Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
-Review.create(shop_owner: carguys, customer: nico, rating: 2, assessment: "my car smells a lot better now")
+Review.create(shop_owner: carguys, customer: nico, rating: 4, assessment: "my car smells a lot better now")
 Review.create(shop_owner: carguys, customer: carl, rating: 2, assessment: "the owner was very impolite")
 
-Review.create(shop_owner: jeffcars, customer: chad, rating: 3, assessment: "fixed issue quickly and correctly!")
-Review.create(shop_owner: jeffcars, customer: jonas, rating: 3, assessment: "destroyed my vehicle")
-Review.create(shop_owner: jeffcars, customer: carl, rating: 5, assessment: "the owner was very impolite")
+Review.create(shop_owner: jeffcars, customer: chad, rating: 1, assessment: "terrible customer service")
+Review.create(shop_owner: jeffcars, customer: jonas, rating: 4, assessment: "weird smell is lessened but still present")
+Review.create(shop_owner: jeffcars, customer: carl, rating: 5, assessment: "the owner was very cool")
 
-Review.create(shop_owner: distantshop, customer: nico, rating: 3.5, assessment: "fixed issue quickly and correctly!")
-Review.create(shop_owner: terrystires, customer: chad, rating: 2, assessment: "fixed issue quickly and correctly!")
+Review.create(shop_owner: distantshop, customer: nico, rating: 3.5, assessment: "fixed issue, took a while")
+Review.create(shop_owner: terrystires, customer: chad, rating: 2, assessment: "the management is a mess")
 
-# Ingests from CSV to seed vehicle_info db
+# Ingests from CSV to seed vehicle_info db - checks for whether local database is empty first
 if VehicleInfo.all.count == 0
     csv_text = File.read(Rails.root.join('db', 'lib', 'seeds', 'vehicle_info_seed.csv'))
     csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
