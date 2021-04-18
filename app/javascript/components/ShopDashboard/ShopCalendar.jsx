@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
+import moment from "moment-timezone";
 import EventInfo from "./EventInfo";
 
-moment.locale("en-US");
+// const momentUTC = (...args) => moment.tz(...args, 'America/New_York');
+// momentUTC.localeData = moment.localeData;
+// const localizer = momentLocalizer(momentUTC);
 const localizer = momentLocalizer(moment);
 
 const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
@@ -17,8 +19,11 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     for (let appt of appointments) {
       let customer = await fetchCustomer(appt["customer_id"]);
       var dateStart = new Date(appt['date']);
+      console.log(`${customer['name']}`)
+      console.log(`${dateStart}`)
       var dateEnd = new Date(appt['date']);
       dateEnd.setHours(dateEnd.getHours() + 1);
+      // next two lines adjust for DST
       tempEvents.push(
         {
         title: customer["name"],
@@ -38,6 +43,10 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     setSelectedEvent(eventObject["resource"]);
   };
 
+  const closeEvent = () => {
+    setEventInfo(false);
+  }
+
   useEffect(() => {
     console.log(shopOwnerId);
     if (appointments != undefined) {
@@ -46,7 +55,7 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
   }, [appointments]);
 
   return (
-    <>
+    <div className='d-flex flex-row'>
       <div style={{ height: 500, width: 550, float: "left" }}>
         <Calendar
           localizer={localizer}
@@ -63,8 +72,10 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
           }}
         />
       </div>
-      {showEventInfo && <EventInfo event={selectedEvent} shopOwnerId={shopOwnerId} />}
-    </>
+      <div>
+      {showEventInfo && <EventInfo event={selectedEvent} shopOwnerId={shopOwnerId} closeEvent={closeEvent} />}
+      </div>
+    </div>
   );
 };
 

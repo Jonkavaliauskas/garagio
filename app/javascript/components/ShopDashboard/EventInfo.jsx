@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../Button";
 
-const EventInfo = ({ event, shopOwnerId }) => {
+const EventInfo = ({ event, closeEvent }) => {
   const fetchApptCar = async (car_id) => {
     const res = await fetch(`http://localhost:3000/api/v1/cars/${car_id}`);
     const data = await res.json();
@@ -57,7 +57,6 @@ const EventInfo = ({ event, shopOwnerId }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(data),
       body: JSON.stringify({
         car_issue: formData.get("car_issue")
       })
@@ -67,13 +66,6 @@ const EventInfo = ({ event, shopOwnerId }) => {
       .then(res => {
         console.log(res);
       })
-    // .then(
-    //     history.push({
-    //       pathname: '/dashboard', 
-    //       state: {
-    //           shopOwnerId: shopOwnerId
-    //       }
-    //   }))
   };
 
   const handleSubmit = event => {
@@ -87,7 +79,6 @@ const EventInfo = ({ event, shopOwnerId }) => {
     <form
       className="d-flex flex-column m-4 event-info-box"
       style={{ width: 450, float: "right" }}
-      onSubmit={handleSubmit}
     >
       <div>
         <h4 style={{ float: "left" }}>{formatDate(dateObject)}</h4>
@@ -97,11 +88,14 @@ const EventInfo = ({ event, shopOwnerId }) => {
             float: "right",
           }}
         >
-          <Button className="btn" text="Submit" />
+          <Button className="btn" text="Close" onClick={closeEvent} />
+          &nbsp;
+          <Button className="btn" text="Save" onClick={handleSubmit} />
         </div>
       </div>
       <p className="remove-top-margin">
         {dateObject.toLocaleString("en-US", { timeZone: "America/New_York" })}
+        {/* {dateObject.toLocaleString()} */}
       </p>
       <div>
         <h5 className="info-header">{customer["name"]}</h5>

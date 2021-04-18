@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import PhoneInput from "react-phone-input-auto-format";
+import moment from "moment-timezone";
 
 
 const FinalizeAppointment = (props) => {
@@ -107,7 +108,7 @@ const FinalizeAppointment = (props) => {
         const data = {
             customer_id: customer_id,
             // TODO: Add datetime form
-            date: formData.get("appointment_datetime"),
+            date: new Date(formData.get("appointment_datetime")),
             car_issue: services.join(", "),
             shop_owner_id: shop.id,
             car_id: car_id
@@ -129,9 +130,10 @@ const FinalizeAppointment = (props) => {
                 throw new Error("Network response was not ok.");
             })
             .then(res => {
-                let date_obj = new Date(res.date);
+                // converts the UTC datetime in database to an Eastern datetime
+                let date_obj = new Date(moment.tz(res['date'], 'UTC').tz('America/New_York').format('YYYY/MM/DD HH:mm:ss'));
                 let date_string = formatDate(date_obj);
-                let time_string = date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[1].split(":")[0] + ":" + date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[1].split(":")[1] + " " + date_obj.toLocaleString('en-US', { timeZone: 'UTC' }).split(" ")[2];
+                let time_string = date_obj.toLocaleString('en-US', { timeZone: 'America/New_York' }).split(" ")[1].split(":")[0] + ":" + date_obj.toLocaleString('en-US', { timeZone: 'America/New_York' }).split(" ")[1].split(":")[1] + " " + date_obj.toLocaleString('en-US', { timeZone: 'America/New_York' }).split(" ")[2];
                 date_string = date_string + " at " + time_string;
                 confirmAppointment("Appointment booked with " + shop.shop_name + " on " + date_string + ". View details at " + APPOINTMENT_SHOW_URL + res.id);
             });

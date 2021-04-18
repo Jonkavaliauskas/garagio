@@ -142,9 +142,6 @@ class Home extends React.Component {
 
             <div className="container secondary-color">
               <h1 className="display-4">Garagio</h1>
-              {/* <p className="lead">
-                Connecting Vehicle Owners to Auto Shops Since 2021
-          </p> */}
               <p className="lead">
                 Enter your car details below to get connected to an Auto Shop!
           </p>

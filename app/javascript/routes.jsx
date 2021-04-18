@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ShopCalendar from "./components/ShopDashboard/ShopCalendar";
 import PhotoSubmitForm from "./components/PhotoSubmitForm";
-import ServiceSelect from "./components/ServiceSelect";
+import ServiceSelect from "./components/ServiceSelect/ServiceSelect";
 import ShopDashboard from "./components/ShopDashboard/ShopDashboard";
 import About from "./components/About";
 import FakeProfile from "./components/FakeProfile";

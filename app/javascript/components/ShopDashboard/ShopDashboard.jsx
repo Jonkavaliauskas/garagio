@@ -64,7 +64,7 @@ const ShopDashboard = (props) => {
             <CustomerList customers={customers} />
           </div>
         </div>
-        <div className="container-fluid d-flex justify-content-center">
+        <div className="d-flex container-fluid justify-content-center flex-row col-9">
           <div>
             <ShopCalendar
               appointments={appointments}
