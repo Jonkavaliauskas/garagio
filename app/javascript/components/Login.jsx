@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Footer from './Footer'
 
 const Login = () => {
-    const USER_URL = "http://localhost:3000/api/v1/shop_owners/index?email="
+    const USER_URL = "api/v1/shop_owners/index?email="
 
     let history = useHistory();
 
