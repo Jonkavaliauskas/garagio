@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
+import moment from "moment-timezone";
 import EventInfo from "./EventInfo";
 
-moment.locale("en-US");
 const localizer = momentLocalizer(moment);
 
 const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
@@ -17,6 +16,8 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     for (let appt of appointments) {
       let customer = await fetchCustomer(appt["customer_id"]);
       var dateStart = new Date(appt['date']);
+      console.log(`${customer['name']}`)
+      console.log(`${dateStart}`)
       var dateEnd = new Date(appt['date']);
       dateEnd.setHours(dateEnd.getHours() + 1);
       tempEvents.push(
@@ -38,6 +39,10 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     setSelectedEvent(eventObject["resource"]);
   };
 
+  const closeEvent = () => {
+    setEventInfo(false);
+  }
+
   useEffect(() => {
     console.log(shopOwnerId);
     if (appointments != undefined) {
@@ -46,8 +51,8 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
   }, [appointments]);
 
   return (
-    <>
-      <div style={{ height: 500, width: 550, float: "left" }}>
+    <div className='d-flex flex-row'>
+      <div style={{ height: 600, width: showEventInfo ? 550 : 800, float: "left" }}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -61,10 +66,13 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
           style={{
             fontSize: "14px",
           }}
+          // formats={{ eventTimeRangeFormat: () => null }}
         />
       </div>
-      {showEventInfo && <EventInfo event={selectedEvent} shopOwnerId={shopOwnerId} />}
-    </>
+      <div>
+      {showEventInfo && <EventInfo event={selectedEvent} shopOwnerId={shopOwnerId} closeEvent={closeEvent} />}
+      </div>
+    </div>
   );
 };
 

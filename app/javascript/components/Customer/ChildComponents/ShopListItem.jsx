@@ -1,7 +1,7 @@
 import { FaTimes } from 'react-icons/fa'
 import React from 'react'
 import { Link } from "react-router-dom";
-import Button from './Button'
+import Button from '../../Button'
 import Rating from '@material-ui/lab/Rating'
 
 const ShopListItem = ({ shop, year, make, model, body, services }) => {
