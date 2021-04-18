@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Button from "../Button";
+import Button from "../../Button";
 import ShopCalendar from "./ShopCalendar";
 import CustomerList from "./CustomerList";
-import Footer from "../Footer";
+import Footer from "../../Footer";
 
 const ShopDashboard = (props) => {
 

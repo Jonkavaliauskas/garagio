@@ -1,17 +1,17 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import ShopCalendar from "./components/ShopDashboard/ShopCalendar";
-import PhotoSubmitForm from "./components/PhotoSubmitForm";
-import ServiceSelect from "./components/ServiceSelect/ServiceSelect";
-import ShopDashboard from "./components/ShopDashboard/ShopDashboard";
-import About from "./components/About";
-import FakeProfile from "./components/FakeProfile";
-import ShopList from "./components/ShopList";
-import FinalizeAppointment from "./components/FinalizeAppointment";
-import AppointmentShow from "./components/AppointmentShow";
+import Login from "./components/ShopOwner/Login";
+import Register from "./components/ShopOwner/Register";
+import ShopCalendar from "./components/ShopOwner/ShopDashboard/ShopCalendar";
+import PhotoSubmitForm from "./components/Other/PhotoSubmitForm";
+import ServiceSelect from "./components/Customer/ServiceSelect";
+import ShopDashboard from "./components/ShopOwner/ShopDashboard/ShopDashboard";
+import About from "./components/Other/About";
+import FakeProfile from "./components/Other/FakeProfile";
+import ShopList from "./components/Customer/ShopList";
+import FinalizeAppointment from "./components/Customer/FinalizeAppointment";
+import AppointmentShow from "./components/Customer/AppointmentShow";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();

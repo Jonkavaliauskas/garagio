@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Button from "../Button";
+import Button from "../../Button";
 
 const EventInfo = ({ event, closeEvent }) => {
   const fetchApptCar = async (car_id) => {
