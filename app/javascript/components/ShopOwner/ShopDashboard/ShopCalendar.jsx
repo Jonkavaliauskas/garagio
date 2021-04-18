@@ -3,9 +3,6 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment-timezone";
 import EventInfo from "./EventInfo";
 
-// const momentUTC = (...args) => moment.tz(...args, 'America/New_York');
-// momentUTC.localeData = moment.localeData;
-// const localizer = momentLocalizer(momentUTC);
 const localizer = momentLocalizer(moment);
 
 const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
@@ -23,7 +20,6 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
       console.log(`${dateStart}`)
       var dateEnd = new Date(appt['date']);
       dateEnd.setHours(dateEnd.getHours() + 1);
-      // next two lines adjust for DST
       tempEvents.push(
         {
         title: customer["name"],
@@ -70,6 +66,7 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
           style={{
             fontSize: "14px",
           }}
+          formats={{ eventTimeRangeFormat: () => null }}
         />
       </div>
       <div>

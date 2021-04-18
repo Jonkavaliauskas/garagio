@@ -1,7 +1,16 @@
 @import 'react-big-calendar/lib/sass/styles';
 
 .rbc-event-content {
-    font-size: 10px
+    font-size: 11px;
+    justify-content: center;
+    align-items: center;
+}
+
+.rbc-event-label {
+    font-size: 50%;
+    overflow-wrap: break-word;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 .rbc-event {
