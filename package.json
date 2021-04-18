@@ -25,10 +25,12 @@
     "react-router-dom": "^5.2.0",
     "sass": "^1.32.8",
     "turbolinks": "^5.2.0",
+    "webpack": "^5.33.2",
     "webpack-dev-server": "^3.11.2"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/core": "^7.13.15",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "react-refresh": "^0.10.0"
   }
