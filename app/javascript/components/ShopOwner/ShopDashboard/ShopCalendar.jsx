@@ -52,7 +52,7 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
 
   return (
     <div className='d-flex flex-row'>
-      <div style={{ height: 500, width: 550, float: "left" }}>
+      <div style={{ height: 600, width: showEventInfo ? 550 : 800, float: "left" }}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -66,7 +66,7 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
           style={{
             fontSize: "14px",
           }}
-          formats={{ eventTimeRangeFormat: () => null }}
+          // formats={{ eventTimeRangeFormat: () => null }}
         />
       </div>
       <div>
