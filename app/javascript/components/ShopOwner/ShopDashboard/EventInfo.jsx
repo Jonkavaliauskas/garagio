@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import "moment-timezone";
 import Button from "../../Button";
 
 const EventInfo = ({ event, closeEvent }) => {
