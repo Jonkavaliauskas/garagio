@@ -22,6 +22,7 @@
     "react-dropdown-select": "^4.7.4",
     "react-icons": "^4.2.0",
     "react-phone-input-auto-format": "^0.1.0",
+    "react-refresh-webpack-plugin": "^0.1.0",
     "react-router-dom": "^5.2.0",
     "sass": "^1.32.8",
     "turbolinks": "^5.2.0",
