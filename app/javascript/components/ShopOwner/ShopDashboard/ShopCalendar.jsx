@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment-timezone";
+import moment from "moment";
 import EventInfo from "./EventInfo";
 
+moment.locale("en-US");
 const localizer = momentLocalizer(moment);
 
-const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
+const ShopCalendar = ({ appointments, fetchCustomer }) => {
 
   const [events, setEvents] = useState([]);
   const [showEventInfo, setEventInfo] = useState(false);
@@ -16,8 +17,6 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     for (let appt of appointments) {
       let customer = await fetchCustomer(appt["customer_id"]);
       var dateStart = new Date(appt['date']);
-      console.log(`${customer['name']}`)
-      console.log(`${dateStart}`)
       var dateEnd = new Date(appt['date']);
       dateEnd.setHours(dateEnd.getHours() + 1);
       tempEvents.push(
@@ -39,20 +38,15 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
     setSelectedEvent(eventObject["resource"]);
   };
 
-  const closeEvent = () => {
-    setEventInfo(false);
-  }
-
   useEffect(() => {
-    console.log(shopOwnerId);
     if (appointments != undefined) {
       convertToEvents(appointments);
     }
   }, [appointments]);
 
   return (
-    <div className='d-flex flex-row'>
-      <div style={{ height: 600, width: showEventInfo ? 550 : 800, float: "left" }}>
+    <>
+      <div style={{ height: 500, width: 550, float: "left" }}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -66,13 +60,10 @@ const ShopCalendar = ({ appointments, fetchCustomer, shopOwnerId }) => {
           style={{
             fontSize: "14px",
           }}
-          // formats={{ eventTimeRangeFormat: () => null }}
         />
       </div>
-      <div>
-      {showEventInfo && <EventInfo event={selectedEvent} shopOwnerId={shopOwnerId} closeEvent={closeEvent} />}
-      </div>
-    </div>
+      {showEventInfo && <EventInfo event={selectedEvent} />}
+    </>
   );
 };
 

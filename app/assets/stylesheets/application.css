@@ -83,12 +83,18 @@
   .shop-list-item {
     width: 650px;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     /* justify-content: center; */
     position:relative;
     /* border-style: groove; */
     padding-bottom: 5%;
   }
+
+  .shop-list-item-top {
+    display:flex;
+    flex-direction: row;
+  }
+
   .shop-list-item-text {
     display:flex;
     flex-direction: column;

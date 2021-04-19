@@ -1,31 +1,53 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types';
 import { useHistory } from "react-router-dom";
 import Footer from '../Footer'
 
-const Login = () => {
-    const USER_URL = "http://localhost:3000/api/v1/shop_owners/index?email="
+import { AuthContext } from '../../contexts/auth';
 
+// const AUTHENTICATE_URL = "http://localhost:3000/api/v1/authenticate" //"http://localhost:3000/api/v1/shop_owners/index?email="
+
+// async function loginUser(credentials) {
+//     return fetch(AUTHENTICATE_URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(credentials)
+//     }).then(res => res.json());
+// } 
+
+const Login = () => {
     let history = useHistory();
 
-    const submitPost = (formData) => {
-        fetch(USER_URL + formData.get("email"))
-            .then(res => res.json())
-            .then(res => {
-                if (res.success == false) {
-                    window.location.reload();
-                }
-                else {
-                    history.push('/dashboard', {
-                        shopOwnerId: res.id
-                    })
-                }
-            });
-    }
+    const authContext = useContext(AuthContext);
 
-    const handleSubmit = event => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    // const submitPost = (formData) => {
+    //     fetch(USER_URL + formData.get("email"))
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             if (res.success == false) {
+    //                 window.location.reload();
+    //             }
+    //             else {
+    //                 history.push('/dashboard', {
+    //                     shopOwnerId: res.id
+    //                 })
+    //             }
+    //         });
+    // }
+
+
+    const handleSubmit = async event => {
         event.preventDefault();
-        const formData = new FormData(event.target);
-        submitPost(formData);
+
+        const success = await authContext.login(email, password);
+
+        if (success)
+            history.push('/dashboard');
     }
 
     return (
@@ -38,12 +60,12 @@ const Login = () => {
                         <form onSubmit={handleSubmit}>
                             <label>
                                 <p>Email</p>
-                                <input type="text" name="email" required />
+                                <input type="text" onChange={e => setEmail(e.target.value)} required />
                             </label>
                             &nbsp;&nbsp;
                             <label>
                                 <p>Password</p>
-                                <input type="password" />
+                                <input type="password" onChange={e => setPassword(e.target.value)} required />
                             </label>
                             <div>
                                 <button className="btn btn-lg custom-button" type="submit">Submit</button>
@@ -55,7 +77,7 @@ const Login = () => {
             <Footer />
 
         </div>
-    )
+    );
 }
 
 export default Login
