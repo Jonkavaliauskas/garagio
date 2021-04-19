@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
+import moment from "moment-timezone";
 import EventInfo from "./EventInfo";
 
 moment.locale("en-US");
@@ -38,6 +38,10 @@ const ShopCalendar = ({ appointments, fetchCustomer }) => {
     setSelectedEvent(eventObject["resource"]);
   };
 
+  const closeEvent = () => {
+    setEventInfo(false);
+  }
+
   useEffect(() => {
     if (appointments != undefined) {
       convertToEvents(appointments);
@@ -45,8 +49,8 @@ const ShopCalendar = ({ appointments, fetchCustomer }) => {
   }, [appointments]);
 
   return (
-    <>
-      <div style={{ height: 500, width: 550, float: "left" }}>
+    <div className='d-flex flex-row'>
+      <div style={{ height: 600, width: showEventInfo ? 550 : 800, float: "left" }}>
         <Calendar
           localizer={localizer}
           events={events}
@@ -62,8 +66,10 @@ const ShopCalendar = ({ appointments, fetchCustomer }) => {
           }}
         />
       </div>
-      {showEventInfo && <EventInfo event={selectedEvent} />}
-    </>
+      <div>
+        {showEventInfo && <EventInfo event={selectedEvent} closeEvent={closeEvent} />}
+      </div>
+    </div>
   );
 };
 

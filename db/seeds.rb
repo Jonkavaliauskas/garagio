@@ -28,15 +28,15 @@ jeffcars = ShopOwner.create(shop_name: "Jeff's Cars", email: "jeffs_cars@gmail.c
 distantshop = ShopOwner.create(shop_name: "Distant Shop, Inc.", email: "distant_shop@gmail.com", address: "110 Willow St, Meriden, CT 06450", description: "Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor ", password: "1234", password_confirmation: "1234")
 terrystires = ShopOwner.create(shop_name: "Terry's Tires", email: "terrys_tires@gmail.com", address: "129 Plains Rd, Milford, CT 06460", description: "Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor ", password: "1234", password_confirmation: "1234")
 
-Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,5,30), car_issue: "ac broke")
-Appointment.create(shop_owner: carguys, customer: jonas, car: bugatti, date: DateTime.new(2021,4,6,2,30), car_issue: "car smells")
-Appointment.create(shop_owner: carguys, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,4,6), car_issue: "car broke")
-Appointment.create(shop_owner: carguys, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,4,6), car_issue: "weird noise")
+Appointment.create(shop_owner: carguys, customer: chad, car: prius, date: DateTime.new(2021,4,1,13,30), car_issue: "ac broke")
+Appointment.create(shop_owner: carguys, customer: jonas, car: bugatti, date: DateTime.new(2021,4,6,16,30), car_issue: "car smells")
+Appointment.create(shop_owner: carguys, customer: carl, car: tesla1, date: DateTime.new(2021,4,4,20,6), car_issue: "car broke")
+Appointment.create(shop_owner: carguys, customer: nico, car: tesla2, date: DateTime.new(2021,4,15,22,6), car_issue: "weird noise")
 
-Appointment.create(shop_owner: jeffcars, customer: chad, car: prius, date: DateTime.new(2021,4,21,5,30), car_issue: "ac broke")
-Appointment.create(shop_owner: jeffcars, customer: jonas, car: bugatti, date: DateTime.new(2021,4,8,2,30), car_issue: "car smells")
-Appointment.create(shop_owner: jeffcars, customer: carl, car: tesla1, date: DateTime.new(2021,4,12,4,6), car_issue: "car broke")
-Appointment.create(shop_owner: jeffcars, customer: nico, car: tesla2, date: DateTime.new(2021,4,14,4,6), car_issue: "weird noise")
+Appointment.create(shop_owner: jeffcars, customer: chad, car: prius, date: DateTime.new(2021,4,21,13,30), car_issue: "ac broke")
+Appointment.create(shop_owner: jeffcars, customer: jonas, car: bugatti, date: DateTime.new(2021,4,8,16,30), car_issue: "car smells")
+Appointment.create(shop_owner: jeffcars, customer: carl, car: tesla1, date: DateTime.new(2021,4,12,20,6), car_issue: "car broke")
+Appointment.create(shop_owner: jeffcars, customer: nico, car: tesla2, date: DateTime.new(2021,4,14,22,6), car_issue: "weird noise")
     
 Review.create(shop_owner: carguys, customer: chad, rating: 5, assessment: "fixed issue quickly and correctly!")
 Review.create(shop_owner: carguys, customer: jonas, rating: 2, assessment: "destroyed my vehicle")
