@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_015832) do
+ActiveRecord::Schema.define(version: 2021_04_05_015833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_015832) do
     t.string "password_digest"
     t.float "lat", null: false
     t.float "lng", null: false
+    t.string "description", null: false
   end
 
   create_table "vehicle_infos", force: :cascade do |t|
