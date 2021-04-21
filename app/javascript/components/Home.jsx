@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from './Footer'
 import Button from './Button'
-import VehicleOptions from "./VehicleOptions";
+import VehicleOptions from "./Customer/VehicleOptions";
 
 
 class Home extends React.Component {
@@ -120,31 +120,14 @@ class Home extends React.Component {
               text='Register'
             />
           </Link>
-          {/* &nbsp;
-          <Link
-            to={{
-              pathname: "/dashboard",
-              state: {
-                shopOwnerId: '10'
-              }
-            }}>
-            <Button
-              className="btn btn-lg custom-button"
-              text='Dashboard'
-            />
-          </Link> */}
           &nbsp;
         </div>
 
-        {/* <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center" style={{ boxSizing: "content-box", backgroundSize: "auto", backgroundImage: "url('https://wallpaper-house.com/data/out/6/wallpaper2you_115491.jpg')" }}> */}
         <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
           <div className="jumbotron jumbotron-fluid bg-transparent">
 
             <div className="container secondary-color">
               <h1 className="display-4">Garagio</h1>
-              {/* <p className="lead">
-                Connecting Vehicle Owners to Auto Shops Since 2021
-          </p> */}
               <p className="lead">
                 Enter your car details below to get connected to an Auto Shop!
           </p>
@@ -223,7 +206,7 @@ class Home extends React.Component {
           </div>
 
         </div>
-      </div >
+      </div>
     );
   }
 

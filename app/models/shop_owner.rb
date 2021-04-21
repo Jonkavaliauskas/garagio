@@ -1,5 +1,5 @@
 class ShopOwner < ApplicationRecord
-    #has_secure_password
+    has_secure_password
     acts_as_mappable :auto_geocode=>true
 
     has_many :appointments

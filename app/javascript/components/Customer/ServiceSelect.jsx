@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from './Footer'
-import ServiceCheckbox from './ServiceCheckbox'
-import Button from './Button'
+import Footer from '../Footer'
+import ServiceCheckbox from './ChildComponents/ServiceCheckbox'
+import Button from '../Button'
 
 const ServiceSelect = (props) => {
 
@@ -10,7 +10,6 @@ const ServiceSelect = (props) => {
 
   const updateServices = (services, serviceName) => {
     if (services.includes(serviceName)) {
-      // services.filter(currentItem => serviceName !== currentItem);
       services.splice(services.indexOf(serviceName), 1);
       setSelectedServices([...services]);
     }
