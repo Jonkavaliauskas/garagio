@@ -1,23 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Button from "../Button";
+import Button from "../../Button";
 import ShopCalendar from "./ShopCalendar";
 import CustomerList from "./CustomerList";
-import Footer from "../Footer";
+import Footer from "../../Footer";
+
+import { AuthContext } from '../../../contexts/auth';
 
 const ShopDashboard = (props) => {
+  const authContext = useContext(AuthContext);
 
   let history = useHistory();
 
   const [appointments, setAppointments] = useState([]);
   const [customers, setCustomers] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { console.log(authContext.token);
+    if (!authContext.token) {
+      history.push('/');
+      return;
+    }
+
     getAppointments(appointments, setAppointments);
   }, []);
 
   const getAppointments = async () => {
-    const shopOwner = await fetchShopOwner(props.location.state.shopOwnerId);
+    const shopOwner = await fetchShopOwner(); //props.location.state.shopOwnerId
     const apptsFromServer = shopOwner["appointments"];
     var tempCustomers = [];
     setAppointments(apptsFromServer);
@@ -32,7 +40,12 @@ const ShopDashboard = (props) => {
   };
 
   const fetchShopOwner = async (id) => {
-    const res = await fetch(`http://localhost:3000/api/v1/shop_owners/${id}`);
+    // const res = await fetch(`http://localhost:3000/api/v1/shop_owners/${id}`);
+    const res = await fetch('http://localhost:3000/api/v1/shop_owners/me', {
+      headers: {
+        'Authorization': authContext.token
+      }
+    });
     const data = await res.json();
 
     return data;
@@ -45,6 +58,11 @@ const ShopDashboard = (props) => {
     return data;
   };
 
+  const onLogout = () => {
+    authContext.logout();
+    history.push('/');
+  }
+
   return (
     <div>
       <div
@@ -53,9 +71,9 @@ const ShopDashboard = (props) => {
         }}
         className="m-2"
       >
-        <Link to="/">
-          <Button className="btn btn-lg custom-button" text="Sign Out" />
-        </Link>
+
+        <Button className="btn btn-lg custom-button" text="Sign Out" onClick={onLogout} />
+
       </div>
       <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
         <div className="col-3 d-flex flex-column justify-content-center align-items-center">
@@ -69,7 +87,6 @@ const ShopDashboard = (props) => {
             <ShopCalendar
               appointments={appointments}
               fetchCustomer={fetchCustomer}
-              shopOwnerId={props.location.state.shopOwnerId}
             />
           </div>
         </div>

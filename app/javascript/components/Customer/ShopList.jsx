@@ -1,8 +1,6 @@
-import ShopListItem from './ShopListItem'
+import ShopListItem from './ChildComponents/ShopListItem'
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
-import Button from './Button'
-import Footer from './Footer'
+import Footer from '../Footer'
 
 
 const ShopList = (props) => {

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      post 'authenticate', to: 'authentication#authenticate'
+
+      get 'shop_owners/me', to: 'shop_owners#me'
+
       get 'appointments/index', to: 'appointments#index'
       post 'appointments/index', to: 'appointments#create'
       get 'appointments/:id', to: 'appointments#show'

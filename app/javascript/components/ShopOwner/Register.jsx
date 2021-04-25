@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
-import Footer from './Footer'
+import Footer from '../Footer'
 
 const Register = () => {
     const USER_URL = "api/v1/shop_owners/index"
@@ -11,7 +11,10 @@ const Register = () => {
         const data = {
             email: formData.get("email"),
             address: formData.get("address"),
-            shop_name: formData.get("shop_name")
+            shop_name: formData.get("shop_name"),
+            description: formData.get("description"),
+            password: formData.get("password_field"),
+            password_confirmation: formData.get("confirm_password_field")
         }
 
         const configObj = {
@@ -29,7 +32,7 @@ const Register = () => {
                     window.location.reload();
                 }
                 else {
-                    history.push('/dashboard', {
+                    history.push('/', {
                         shopOwnerId: res.id
                     })
                 }
@@ -63,6 +66,11 @@ const Register = () => {
                             <label>
                                 <p>Email</p>
                                 <input type="text" name="email" />
+                            </label>
+                            &nbsp;
+                            <label>
+                                <p>Description</p>
+                                <textarea name="description" />
                             </label>
                             &nbsp;
                             <label>
