@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const FakeProfile = (props) => {
     const [shop, setShop] = useState({});
     const history = useHistory();
-    const shopURL = "http://localhost:3000/api/v1/shop_owners/";
+    const shopURL = "api/v1/shop_owners/";
 
     const fetchShop = async (id) => {
         fetch(shopURL + id)

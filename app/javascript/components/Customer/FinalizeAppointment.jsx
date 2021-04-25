@@ -10,9 +10,9 @@ import moment from "moment-timezone";
 const FinalizeAppointment = (props) => {
     const { year, make, model, body, shop, services } = props.location.state;
 
-    const CUSTOMER_URL = "http://localhost:3000/api/v1/customers/index"
-    const CAR_URL = "http://localhost:3000/api/v1/cars/index"
-    const APPOINTMENT_URL = "http://localhost:3000/api/v1/appointments/index"
+    const CUSTOMER_URL = "api/v1/customers/index"
+    const CAR_URL = "api/v1/cars/index"
+    const APPOINTMENT_URL = "api/v1/appointments/index"
     const APPOINTMENT_SHOW_URL = "http://localhost:3000/appointments/"
 
     let history = useHistory();
