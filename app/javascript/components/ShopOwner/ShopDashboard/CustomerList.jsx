@@ -5,7 +5,7 @@ const CustomerList = ({ customers }) => {
   return (
     <>
       {customers.map((customer) => (
-        <div key={customer.id}>
+        <div className='testing' key={customer.id}>
           <CustomerBox
             key={customer.id}
             name={customer["name"]}
