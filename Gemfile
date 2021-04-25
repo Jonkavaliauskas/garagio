@@ -37,6 +37,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rspec_api_documentation'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'database_cleaner'
 end
 
 group :development do
