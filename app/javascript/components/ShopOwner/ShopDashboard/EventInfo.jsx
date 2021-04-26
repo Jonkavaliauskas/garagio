@@ -81,13 +81,14 @@ const EventInfo = ({ event, closeEvent }) => {
       className="d-flex flex-column m-4 event-info-box"
       style={{ width: 450, float: "right" }}
     >
-      <div>
+      <div id='appt-date'>
         <h4 style={{ float: "left" }}>{formatDate(dateObject)}</h4>
         <div
           style={{
             position: "relative",
             float: "right",
           }}
+          id='buttons'
         >
           <Button className="btn" text="Close" onClick={closeEvent} />
           &nbsp;
@@ -96,20 +97,19 @@ const EventInfo = ({ event, closeEvent }) => {
       </div>
       <p className="remove-top-margin">
         {dateObject.toLocaleString("en-US", { timeZone: "America/New_York" })}
-        {/* {dateObject.toLocaleString()} */}
       </p>
-      <div>
+      <div id='customer-info'>
         <h5 className="info-header">{customer["name"]}</h5>
         <p className="information">{customer["email"]}</p>
         <p className="information">{customer["phone_number"]}</p>
       </div>
-      <div>
+      <div id='vehicle-info'>
         <h5 className="info-header">Vehicle Info</h5>
         <p className="information">
           {apptCar["year"]} {apptCar["make"]} {apptCar["model"]}
         </p>
       </div>
-      <div>
+      <div id='vehicle-issue'>
         <h5>Vehicle Issue</h5>
         <textarea
           name="car_issue"
