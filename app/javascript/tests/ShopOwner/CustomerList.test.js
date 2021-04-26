@@ -9,6 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('rendering CustomerList', () => {
     let wrapper;
+    const submitForm = jest.fn();
     let customers = [
         {"id":76,"name":"Chad Palmer","email":"chad.palmer@yale.edu","created_at":"2021-04-26T02:23:31.552Z","updated_at":"2021-04-26T02:23:31.552Z","password_digest":null,"phone":"(123) 456-7890"},
         {"id":77,"name":"Jonas Kavaliauskas","email":"jonas.kavaliauskas@yale.edu","created_at":"2021-04-26T02:23:31.555Z","updated_at":"2021-04-26T02:23:31.555Z","password_digest":null,"phone":"(123) 456-7890"},
