@@ -76,6 +76,11 @@ GEM
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
     erubi (1.10.0)
+    factory_girl (4.9.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
+      railties (>= 3.0.0)
     ffi (1.15.0)
     ffi (1.15.0-x86-mingw32)
     geokit (1.13.1)
@@ -192,6 +197,8 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     simple_command (0.1.0)
     spring (2.1.1)
     sprockets (4.0.2)
@@ -232,6 +239,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner
+  factory_girl_rails
   geokit-rails
   jbuilder (~> 2.7)
   jwt
@@ -244,6 +252,7 @@ DEPENDENCIES
   rspec-rails
   rspec_api_documentation
   sass-rails (>= 6)
+  shoulda-matchers
   simple_command
   spring
   tzinfo-data
