@@ -39,5 +39,11 @@
     "win32": "^6.0.2"
   },
   "version": "0.1.0",
-  "devDependencies": {}
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "enzyme": "^3.11.0",
+    "jest": "^26.6.3",
+    "react-refresh": "^0.10.0"
+  }
 }
