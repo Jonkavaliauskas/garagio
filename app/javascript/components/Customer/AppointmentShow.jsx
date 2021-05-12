@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const AppointmentShow = props => {
     const { match: { params } } = props;
     const history = useHistory();
-    const aptURL = "api/v1/appointments/";
+    const aptURL = "http://localhost:3000/api/v1/appointments/";
 
     const [apt, setApt] = useState({});
     const [customer, setCustomer] = useState({});
@@ -12,6 +12,7 @@ const AppointmentShow = props => {
     const [car, setCar] = useState({});
 
     const fetchApt = async (id) => {
+        console.log(id);
         fetch(aptURL + id)
             .then(res => res.json())
             .then(res => {
